@@ -1,6 +1,9 @@
-import {useTheme} from 'app/providers/ThemeProvider';
+import {Theme, useTheme} from 'app/providers/ThemeProvider';
 import {classNames} from 'shared/lib/classNames/classNames';
 import cls from './ThemeSwitcher.module.scss';
+import LightIcon from 'shared/assets/icons/theme-light.svg';
+import DarkIcon from 'shared/assets/icons/theme-dark.svg';
+import {Button, ThemeButton} from 'shared/ui/Button/Button';
 
 interface PropsThemeSwitcher {
     className?: string;
@@ -9,14 +12,13 @@ interface PropsThemeSwitcher {
 export const ThemeSwitcher = ({className}: PropsThemeSwitcher) => {
     const {theme, toggleTheme} = useTheme();
 
-    console.log(className);
-
     return (
-        <button
+        <Button
+            theme={ThemeButton.CLEAR}
             className={classNames(cls.themeSwitcher, {}, [className])}
             onClick={toggleTheme}
         >
-            TOGGLE
-        </button>
+            {theme !== Theme.LIGHT ? <DarkIcon /> : <LightIcon />}
+        </Button>
     );
 };
