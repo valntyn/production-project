@@ -7,8 +7,16 @@
 input,
 button,
 textarea,
+ul,
+li
 select {
     margin: 0;
 
     font: inherit;
+}
+
+ul, li {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
 }
