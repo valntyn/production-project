@@ -7,10 +7,6 @@
     transition: width 0.3s;
 }
 
-.collapsed {
-    width: var(--sidebar-width-collapsed);
-}
-
 .switches {
     position: absolute;
     bottom: 20px;
@@ -20,5 +16,46 @@
     gap: 20px;
 }
 
-.lang {
+.collapseBtn {
+    position: absolute;
+    right: -32px;
+    bottom: 24px;
 }
+
+.navItems {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+.link {
+    margin-left: 10px;
+}
+
+.icon {
+    fill: var(--primary-color-inverted);
+}
+
+.item {
+    margin-top: 10px;
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.collapsed {
+    width: var(--sidebar-width-collapsed);
+
+    .switches {
+        flex-direction: column;
+    }
+
+    .link {
+        opacity: 0;
+        transition: 0.2s opacity;
+        width: 0;
+    }
+}
+
+
