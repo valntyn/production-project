@@ -4,7 +4,8 @@ import { Sidebar } from 'widgets/Sidebar';
 import { Suspense } from 'react';
 
 import { useTheme } from './providers/ThemeProvider';
-import { AppRouter } from './providers/ThemeProvider/routes';
+import { AppRouter } from './providers/routes';
+
 import './styles/index.scss';
 
 const App = () => {
