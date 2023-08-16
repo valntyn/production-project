@@ -7,5 +7,10 @@
     "Оновити сторінку": "Update page",
     "Головна": "Main",
     "Про сайт": "About",
+    "Введи пароль": "Enter password",
+    "Введи username": "Enter username",
+    "Aвторізація":"Authorization",
+    "ввели неправильний логін чи пароль": "wrong password or username",
+    "Вийти": "Log out",
     "Вхід": "Log in"
 }
