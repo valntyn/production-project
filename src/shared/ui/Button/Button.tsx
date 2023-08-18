@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { classNames } from 'shared/lib/classNames/classNames';
-import { ButtonHTMLAttributes, FC } from 'react';
+import { ButtonHTMLAttributes, FC, memo } from 'react';
 
 import cls from './Button.module.scss';
 
@@ -26,7 +26,7 @@ interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
     disabled?: boolean;
 }
 
-export const Button: FC<PropsButton> = (props) => {
+export const Button = memo((props: PropsButton) => {
     const {
         className,
         children,
@@ -52,4 +52,4 @@ export const Button: FC<PropsButton> = (props) => {
             {children}
         </button>
     );
-};
+});

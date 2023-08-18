@@ -2,13 +2,14 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
-import { useDispatch, useSelector, useStore } from 'react-redux';
+import { useSelector, useStore } from 'react-redux';
 import { memo, useCallback, useEffect } from 'react';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
 import {
     DynamicModuleLoader, ReducersList,
 } from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 
 import {
     getLoginUsername,
@@ -26,15 +27,16 @@ import cls from './LoginForm.module.scss';
 
 export interface LoginFormProps {
     className?: string;
+    onSuccess: () => void;
 }
 
 const initialReducers: ReducersList = {
     login: loginReducer,
 };
 
-const LoginForm = memo(({ className }: LoginFormProps) => {
+const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
     const { t } = useTranslation();
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
     const store = useStore() as ReduxStoreWithManager;
     const username = useSelector(getLoginUsername);
     const password = useSelector(getLoginPassword);
@@ -57,9 +59,13 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
         dispatch(loginActions.setPassword(value));
     }, [dispatch]);
 
-    const onLogingClick = useCallback(() => {
-        dispatch(loginByUserName({ username, password }));
-    }, [dispatch, password, username]);
+    const onLogingClick = useCallback(async () => {
+        const result = dispatch(loginByUserName({ username, password }));
+
+        if ((await result).meta.requestStatus === 'fulfilled') {
+            onSuccess();
+        }
+    }, [dispatch, password, username, onSuccess]);
 
     return (
         <DynamicModuleLoader
@@ -89,13 +95,16 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
                     onChange={onChangePassword}
                     value={password}
                 />
-                <Button
-                    onClick={onLogingClick}
-                    theme={ThemeButton.OUTLINE}
-                    disabled={isLoading}
-                >
-                    {t('Вхід')}
-                </Button>
+                <div className={cls.buttonWrapper}>
+                    <Button
+                        className={classNames(cls.loginBtn, {}, [])}
+                        onClick={onLogingClick}
+                        theme={ThemeButton.OUTLINE}
+                        disabled={isLoading}
+                    >
+                        {t('Вхід')}
+                    </Button>
+                </div>
             </div>
         </DynamicModuleLoader>
     );

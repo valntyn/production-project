@@ -8,7 +8,15 @@
     margin-top: 10px;
 }
 
+.buttonWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
 .loginBtn {
-    margin-top: 15px;
-    margin-left: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
 }

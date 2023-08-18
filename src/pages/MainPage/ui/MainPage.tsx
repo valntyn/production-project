@@ -1,9 +1,9 @@
 import { BugButton } from 'app/providers/ErrorBoundary';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Input } from 'shared/ui/Input/Input';
 
-const MainPage = () => {
+const MainPage = memo(() => {
     const { t } = useTranslation('main');
     const [value, setValue] = useState('');
 
@@ -22,6 +22,6 @@ const MainPage = () => {
             {t('Головна')}
         </div>
     );
-};
+});
 
 export default MainPage;

@@ -1,31 +1,38 @@
 {
     "posts": [
         {
-            "id": 1,
+            "id": "1",
             "title": "json-server",
-            "userId": 1
+            "userId": "1"
         },
         {
-            "id": 2,
+            "id": "2",
             "title": "json-server",
-            "userId": 2
+            "userId": "2"
         }
     ],
     "comments": [
         {
-            "id": 1,
+            "id": "1",
             "body": "some comment",
-            "postId": 1
+            "postId": "1"
         }
     ],
     "users": [
         {
-            "id": 1,
+            "id": "1",
             "username": "admin",
             "password": "123"
         }
     ],
     "profile": {
-        "name": "typicode"
+        "first": "Valenyn",
+        "lastname": "Romanenko",
+        "age": 22,
+        "currency": "UAH",
+        "country": "Ukraine",
+        "city": "Mariupol",
+        "username": "admin",
+        "avatar": "https://lh3.googleusercontent.com/a/AAcHTteAf5l8NYDA1d9lZ4dLnf7Dpp8l5yvzJ-9Z-ggsxo5Fs3Q=s432-c-no"
     }
 }
