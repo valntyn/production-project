@@ -9,6 +9,20 @@
     background: none;
 }
 
+.outline-red {
+    padding: 8px;
+    border: 1px solid var(--color-error);
+    color: var(--color-error);
+    background: none;
+}
+
+.outline-green {
+    padding: 8px;
+    border: 1px solid var(--color-button-green);
+    color: var(--color-button-green);
+    background: none;
+}
+
 .clear,
 .clearInverted {
     padding: 0;

@@ -1,13 +1,22 @@
 .ProfileCard {
     padding: 20px;
-    border: 2px solid var(--bg-color-inverted);
-}
-
-.header {
-    display: flex;
-    margin-bottom: 30px;
+    border: 3px solid var(--bg-color-inverted);
 }
 
 .editBtn {
     margin-left: auto;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+}
+
+.error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
 }
