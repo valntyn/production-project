@@ -1,5 +1,6 @@
 import { getProfileData } from './model/selectors/getProfileData';
 import { getProfileError } from './model/selectors/getProfileError';
+import { getProfileErrorValidator } from './model/selectors/getProfileErrorValidator';
 import { getProfileForm } from './model/selectors/getProfileForm';
 import { getProfileLoading } from './model/selectors/getProfileLoading';
 import { getProfileReadOnly } from './model/selectors/getProfileReadOnly';
@@ -24,4 +25,5 @@ export {
     getProfileReadOnly,
     getProfileForm,
     updateProfileData,
+    getProfileErrorValidator,
 };

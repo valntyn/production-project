@@ -12,6 +12,7 @@
     "Введи username": "Enter username",
     "Aвторізація":"Authorization",
     "ввели неправильний логін чи пароль": "wrong password or username",
+    "Оберіть валюту": "Currency",
     "Вийти": "Log out",
     "Вхід": "Log in"
 }
