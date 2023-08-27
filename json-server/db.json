@@ -26,10 +26,10 @@
     }
   ],
   "profile": {
-    "first": "Valentyntesttt",
+    "first": "Valentyntestt",
     "lastname": "Romanenko",
     "age": 2,
-    "currency": "USD",
+    "currency": "EUR",
     "country": "Belgium",
     "city": "Mariupol",
     "username": "admin",
