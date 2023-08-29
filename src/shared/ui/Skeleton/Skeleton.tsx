@@ -10,13 +10,14 @@ interface SkeletonProps {
     border?: string;
 }
 
-export type SkeletonBorder = {
-    
-}
+export type SkeletonBorder = {}
 
 export const Skeleton = (props: SkeletonProps) => {
     const {
-        border, width, height, className,
+        border,
+        width,
+        height,
+        className,
     } = props;
 
     const styles: CSSProperties = {
@@ -29,8 +30,6 @@ export const Skeleton = (props: SkeletonProps) => {
         <div
             className={classNames(cls.Skeleton, {}, [className])}
             style={styles}
-        >
-            Skeleton
-        </div>
+        />
     );
 };

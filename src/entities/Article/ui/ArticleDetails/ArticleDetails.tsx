@@ -1,18 +1,17 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import {
-    DynamicModuleLoader, ReducersList,
-} from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
 import { useTranslation } from 'react-i18next';
 import { memo, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchArticleById } from 'entities/Article/model/services/fetchArticleByid/fetchArticleById';
 import {
-    fetchArticleById,
-} from 'entities/Article/model/services/fetchArticleByid/fetchArticleById';
-import {
-    getArticleDetailsData, getArticleDetailsError, getArticleDetailsIsLoading,
+    getArticleDetailsData,
+    getArticleDetailsError,
+    getArticleDetailsIsLoading,
 } from 'entities/Article/model/selectors/articleDetails';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
 
 import cls from './ArticleDetails.module.scss';
 
@@ -45,7 +44,13 @@ export const ArticleDetails = memo(({
 
     if (isLoading) {
         content = (
-            <div>Loading...</div>
+            <div>
+                <Skeleton width={200} height={200} border="50%" />
+                <Skeleton width={300} height={32} />
+                <Skeleton width={600} height={24} />
+                <Skeleton width="100%" height={200} />
+                <Skeleton width="100%" height={200} />
+            </div>
         );
     } else if (error) {
         content = (
