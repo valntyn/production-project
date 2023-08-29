@@ -4,6 +4,7 @@ import { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
+import { Text } from 'shared/ui/Text/Text';
 
 import { SidebarItemType } from '../../model/items';
 import cls from './SidebarItem.module.scss';
@@ -30,7 +31,7 @@ export const SidebarItem = memo(({ collapsed, item }: SidebarItemProps) => {
             to={path}
         >
             <Icon className={cls.icon} />
-            <span className={cls.link}>{t(text)}</span>
+            <Text className={cls.link} text={t(text)} />
         </AppLink>
     );
 });

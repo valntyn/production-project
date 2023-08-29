@@ -1,21 +1,22 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo } from 'react';
+import { ArticleDetails } from 'entities/Article';
 
 import cls from './ArticlesPage.module.scss';
 
-interface ArticleDetailsPageProps {
+interface ArticlesPageProps {
     className?: string;
 }
 
-const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
+const ArticlesPage = ({ className }: ArticlesPageProps) => {
     const { t } = useTranslation();
 
     return (
         <div className={classNames(cls.ArticlesPage, {}, [className])}>
-            1
+            test
         </div>
     );
 };
 
-export default memo(ArticleDetailsPage);
+export default memo(ArticlesPage);
