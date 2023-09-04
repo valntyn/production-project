@@ -1,17 +1,37 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
+import {
+    DynamicModuleLoader,
+    ReducersList,
+} from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
 import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
-import { useTranslation } from 'react-i18next';
-import { memo, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchArticleById } from 'entities/Article/model/services/fetchArticleByid/fetchArticleById';
+import {
+    fetchArticleById,
+} from 'entities/Article/model/services/fetchArticleByid/fetchArticleById';
 import {
     getArticleDetailsData,
     getArticleDetailsError,
     getArticleDetailsIsLoading,
 } from 'entities/Article/model/selectors/articleDetails';
-import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
+import {
+    Text, TextAlign, TextSize, TextTheme,
+} from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { Photo } from 'shared/ui/Photo/Photo';
+import EyeIcon from 'shared/assets/icons/eye.svg';
+import CalendarIcon from 'shared/assets/icons/calendar.svg';
+import { Icon } from 'shared/ui/Icon/Icon';
+import { ArticleBlock, ArticleBlockType } from 'entities/Article/model/types/article';
+import {
+    ArticleCodeBlockComponent,
+} from 'entities/Article/ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
+import {
+    ArticleImagesBlockComponent,
+} from 'entities/Article/ui/ArticleImagesBlockComponent/ArticleImagesBlockComponent';
+import {
+    ArticleTextBlockComponent,
+} from 'entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 
 import cls from './ArticleDetails.module.scss';
 
@@ -28,11 +48,37 @@ export const ArticleDetails = memo(({
     className,
     id,
 }: ArticleDetailsProps) => {
-    const { t } = useTranslation();
     const dispatch = useDispatch();
     const isLoading = useSelector(getArticleDetailsIsLoading);
-    const article = useSelector(getArticleDetailsData);
     const error = useSelector(getArticleDetailsError);
+    const article = useSelector(getArticleDetailsData);
+
+    const renderBlock = useCallback((block: ArticleBlock) => {
+        switch (block.type) {
+        case ArticleBlockType.CODE:
+            return (
+                <ArticleCodeBlockComponent
+                    key={block.id}
+                    block={block}
+                />
+            );
+        case ArticleBlockType.IMAGE:
+            return (
+                <ArticleImagesBlockComponent
+                    key={block.id}
+                    block={block}
+                />
+            );
+        case ArticleBlockType.TEXT:
+            return (
+                <ArticleTextBlockComponent
+                    key={block.id}
+                    block={block}
+                />
+            );
+        default: return null;
+        }
+    }, []);
 
     useEffect(() => {
         if (id) {
@@ -44,13 +90,13 @@ export const ArticleDetails = memo(({
 
     if (isLoading) {
         content = (
-            <div>
-                <Skeleton width={200} height={200} border="50%" />
-                <Skeleton width={300} height={32} />
-                <Skeleton width={600} height={24} />
-                <Skeleton width="100%" height={200} />
-                <Skeleton width="100%" height={200} />
-            </div>
+            <>
+                <Skeleton className={cls.photo} width={200} height={200} border="50%" />
+                <Skeleton className={cls.skeleton} width={300} height={32} />
+                <Skeleton className={cls.skeleton} width={400} height={24} />
+                <Skeleton className={cls.skeleton} width="100%" height={200} />
+                <Skeleton className={cls.skeleton} width="100%" height={200} />
+            </>
         );
     } else if (error) {
         content = (
@@ -62,7 +108,26 @@ export const ArticleDetails = memo(({
         );
     } else {
         content = (
-            <div>ARTICLE DETAILS</div>
+            <>
+                <div className={cls.photoWrapper}>
+                    <Photo size={200} src={article?.img} className={cls.photo} />
+                </div>
+                <Text
+                    title={article?.title}
+                    className={cls.skeleton}
+                    text={article?.subtitle}
+                    size={TextSize.M}
+                />
+                <div className={cls.articleInfo}>
+                    <Icon Svg={EyeIcon} className={cls.icon} />
+                    <Text text={String(article?.views)} />
+                </div>
+                <div className={cls.articleInfo}>
+                    <Icon Svg={CalendarIcon} className={cls.icon} />
+                    <Text text={article?.createdAt} />
+                </div>
+                {article?.blocks.map(renderBlock)}
+            </>
         );
     }
 

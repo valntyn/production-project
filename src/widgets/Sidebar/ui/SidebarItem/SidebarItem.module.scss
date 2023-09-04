@@ -1,6 +1,10 @@
 .link {
     margin-left: 10px;
     width: 80px;
+
+    & > * {
+        color: var(--primary-color-inverted);
+    }
 }
 
 .icon {

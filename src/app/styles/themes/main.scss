@@ -2,8 +2,8 @@
     --bg-color: #409998;
     --bg-color-inverted: #f4fbfb;
 
-    --primary-color: #f4fbfb;
-    --secondary-color: #357e52;
+    --primary-color: #ffffff;
+    --secondary-color: rgba(214, 255, 253, 0.93);
 
     --primary-color-inverted: #357e52;
     --secondary-color-inverted: #f4fbfb;
@@ -11,4 +11,7 @@
     // skeleton
     --skeleton-color: #fff;
     --skeleton-shadow: rgba(0 0 0 / 20%);
+
+    // code
+    --code-bg: #336657;
 }
