@@ -1,4 +1,4 @@
-import { Mods, classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { CSSProperties, useMemo } from 'react';
 
 import cls from './Photo.module.scss';
@@ -8,17 +8,19 @@ interface PhotoProps {
     src?: string;
     alt?: string;
     size?: number;
+    border?: string;
 }
 
 export const Photo = ({
-    className, src, alt, size,
+    className, src, alt, size, border,
 }: PhotoProps) => {
     const mods: Mods = {};
 
     const styles = useMemo<CSSProperties>(() => ({
         width: size || 100,
         height: size || 100,
-    }), [size]);
+        borderRadius: border,
+    }), [border, size]);
 
     return (
         <img

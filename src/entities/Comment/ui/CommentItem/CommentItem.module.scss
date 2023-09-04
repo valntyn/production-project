@@ -1,4 +1,4 @@
-CommentItem {
+.CommentItem {
     padding: 10px;
     border: 1px solid var(--primary-color);
 }
@@ -6,6 +6,7 @@ CommentItem {
 .header {
     display: flex;
     align-items: center;
+    gap: 8px;
 }
 
 .text {
