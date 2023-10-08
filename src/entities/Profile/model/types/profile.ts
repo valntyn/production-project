@@ -9,14 +9,15 @@ export enum ValidateProfileError {
 }
 
 export interface Profile {
-    first?: string
-    lastname?: string
-    age?: string | number
-    currency?: Currency
-    country?: string
-    city?: string
-    username?: string
-    avatar?: string
+    id?: string;
+    first?: string;
+    lastname?: string;
+    age?: string | number;
+    currency?: Currency;
+    country?: string;
+    city?: string;
+    username?: string;
+    avatar?: string;
 }
 
 export interface ProfileSchema {

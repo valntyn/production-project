@@ -4,10 +4,14 @@ import i18n from 'shared/config/i18n/i18n';
 
 import { Profile } from '../../types/profile';
 
-export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<string>>(
+export const fetchProfileData = createAsyncThunk<
+    Profile,
+    string,
+    ThunkConfig<string>
+>(
     'profile/fetchProfileData',
 
-    async (_, thunkApi) => {
+    async (profileId, thunkApi) => {
         const {
             extra,
             rejectWithValue,
@@ -15,7 +19,11 @@ export const fetchProfileData = createAsyncThunk<Profile, void, ThunkConfig<stri
 
         try {
             const response = await extra.api
-                .get<Profile>('/profile');
+                .get<Profile>(`/profile/${profileId}`);
+
+            if (!response.data) {
+                throw new Error();
+            }
 
             return response.data;
         } catch (e) {

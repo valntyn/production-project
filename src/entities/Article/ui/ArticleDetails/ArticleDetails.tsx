@@ -76,7 +76,8 @@ export const ArticleDetails = memo(({
                     block={block}
                 />
             );
-        default: return null;
+        default:
+            return null;
         }
     }, []);
 
@@ -89,6 +90,7 @@ export const ArticleDetails = memo(({
     let content;
 
     if (isLoading) {
+        console.log(123);
         content = (
             <>
                 <Skeleton className={cls.photo} width={200} height={200} border="50%" />

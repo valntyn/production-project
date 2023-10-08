@@ -1,5 +1,4 @@
 import {
-    ProfileCard,
     fetchProfileData,
     getProfileError,
     getProfileErrorValidator,
@@ -7,18 +6,17 @@ import {
     getProfileLoading,
     getProfileReadOnly,
     profileActions,
+    ProfileCard,
     profileReducer,
 } from 'entities/Profile';
 import { memo, useCallback, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import {
-    DynamicModuleLoader,
-    ReducersList,
-} from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
+import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { Currency } from 'entities/Currency';
 import { Country } from 'entities/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
+import { useParams } from 'react-router-dom';
 
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
@@ -37,10 +35,13 @@ const ProfilePage = memo(({ className }: Props) => {
     const readonly = useSelector(getProfileReadOnly);
     const validateErrors = useSelector(getProfileErrorValidator);
     const dispatch = useAppDispatch();
+    const { id } = useParams<{ id: string }>();
 
     useEffect(() => {
-        dispatch(fetchProfileData());
-    }, [dispatch]);
+        if (id) {
+            dispatch(fetchProfileData(id));
+        }
+    }, [dispatch, id]);
 
     const onChangeFirstName = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ first: value }));

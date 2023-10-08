@@ -1,6 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { memo } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { ArticleDetails } from 'entities/Article';
 import { useParams } from 'react-router-dom';
 import { Text } from 'shared/ui/Text/Text';
@@ -9,7 +9,12 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    fetchCommentsByArticleId,
+} from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { AddCommentForm } from 'features/addCommentForm';
+import { addCommentForArticle } from 'pages/ArticleDetailsPage/services/addCommentForArticle';
 
 import {
     articleDetailsCommentsReducer,
@@ -28,9 +33,18 @@ const reducers: ReducersList = {
 
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const { t } = useTranslation('articles');
-    const { id } = useParams<{id: string}>();
+    const { id } = useParams<{ id: string }>();
+    const dispatch = useDispatch();
     const comments = useSelector(getArticleComments.selectAll);
     const isLoading = useSelector(getArticleCommentsIsLoading);
+
+    useEffect(() => {
+        dispatch(fetchCommentsByArticleId(id));
+    }, [dispatch, id]);
+
+    const onSendComment = useCallback((text) => {
+        dispatch(addCommentForArticle(text));
+    }, [dispatch]);
 
     if (!id) {
         return (
@@ -45,6 +59,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
             <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
                 <ArticleDetails id={id} />
                 <Text title="Comment" className={cls.commentTitle} />
+                <AddCommentForm onSendComment={onSendComment} />
                 <CommentList
                     comments={comments}
                     isLoading={isLoading}

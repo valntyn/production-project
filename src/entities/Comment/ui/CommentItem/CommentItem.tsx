@@ -4,6 +4,8 @@ import { Comment } from 'entities/Comment';
 import { Photo } from 'shared/ui/Photo/Photo';
 import { Text } from 'shared/ui/Text/Text';
 import { Skeleton } from 'shared/ui/Skeleton/Skeleton';
+import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 
 import cls from './CommentItem.module.scss';
 
@@ -42,10 +44,12 @@ export const CommentItem = memo((props: CommentItemProps) => {
                 [className],
             )}
         >
-            <div className={cls.header}>
-                {comment.user.avatar ? <Photo size={30} border="50%" src={comment.user.avatar} /> : null}
+            <AppLink to={`${RoutePath.profile}${comment.user.id}`} className={cls.header}>
+                {comment.user.avatar
+                    ? <Photo size={30} border="50%" src={comment.user.avatar} />
+                    : null}
                 <Text className={cls.username} title={comment.user.username} />
-            </div>
+            </AppLink>
             <Text className={cls.text} text={comment.text} />
         </div>
     );
