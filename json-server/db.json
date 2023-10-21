@@ -355,6 +355,12 @@
       "userId": "2",
       "text": "teest",
       "id": "Djrj--E"
+    },
+    {
+      "articleId": "2",
+      "userId": "1",
+      "text": "asd",
+      "id": "SzI6KPO"
     }
   ],
   "users": [
@@ -377,7 +383,7 @@
       "first": "Valentyntesttsdfdsf sfdsf",
       "lastname": "Romanenko",
       "age": 2,
-      "currency": "USD",
+      "currency": "EUR",
       "country": "Belgium",
       "city": "Mariupol",
       "username": "admin",

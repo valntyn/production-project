@@ -1,11 +1,15 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo, useEffect } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
-import { articlesPageReducer, getArticles } from 'pages/ArticlesPage/model/slices/articlePageSlice';
+import {
+    articlesPageActions,
+    articlesPageReducer,
+    getArticles,
+} from 'pages/ArticlesPage/model/slices/articlePageSlice';
 import { useSelector } from 'react-redux';
 import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
@@ -14,6 +18,7 @@ import {
     getArticlesPageIsLoading,
     getArticlesPageView,
 } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
+import { ArticleView, ViewSelector } from 'entities/Article';
 
 import cls from './ArticlesPage.module.scss';
 
@@ -34,11 +39,17 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
 
     useEffect(() => {
         dispatch(fetchArticlesList());
+        dispatch(articlesPageActions.initState());
+    }, [dispatch]);
+
+    const onChangeView = useCallback((view: ArticleView) => {
+        dispatch(articlesPageActions.setView(view));
     }, [dispatch]);
 
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterMount>
             <div className={classNames(cls.ArticlesPage, {}, [className])}>
+                <ViewSelector view={view} onViewClick={onChangeView} />
                 <ArticleList
                     isLoading={isLoading}
                     view={view}
