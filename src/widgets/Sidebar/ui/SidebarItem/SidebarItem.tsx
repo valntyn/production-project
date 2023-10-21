@@ -5,8 +5,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useSelector } from 'react-redux';
 import { getUserAuthData } from 'entities/User';
 import { Text } from 'shared/ui/Text/Text';
+import { SidebarItemType } from 'widgets/Sidebar/model/types/sidebar';
 
-import { SidebarItemType } from '../../model/items';
 import cls from './SidebarItem.module.scss';
 
 interface SidebarItemProps {
