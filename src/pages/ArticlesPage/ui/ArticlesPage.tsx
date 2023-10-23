@@ -14,14 +14,12 @@ import { useSelector } from 'react-redux';
 import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import {
-    getArticlesPageError,
-    getArticlesPageHasMore,
     getArticlesPageIsLoading,
-    getArticlesPageNum,
     getArticlesPageView,
 } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { ArticleView, ViewSelector } from 'entities/Article';
 import { Page } from 'shared/ui/Page/Page';
+import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage';
 
 import cls from './ArticlesPage.module.scss';
 
@@ -37,10 +35,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
     const dispatch = useAppDispatch();
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
-    const error = useSelector(getArticlesPageError);
     const view = useSelector(getArticlesPageView);
-    const page = useSelector(getArticlesPageNum);
-    const hasMore = useSelector(getArticlesPageHasMore);
 
     useEffect(() => {
         dispatch(articlesPageActions.initState());
@@ -52,11 +47,8 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
     }, [dispatch]);
 
     const onLoadNextPartArticls = useCallback(() => {
-        if (hasMore && !isLoading) {
-            dispatch(articlesPageActions.setPage(page + 1));
-            dispatch(fetchArticlesList({ page: page + 1 }));
-        }
-    }, [dispatch, hasMore, isLoading, page]);
+        dispatch(fetchNextArticlesPage());
+    }, [dispatch]);
 
     const onChangeView = useCallback((view: ArticleView) => {
         dispatch(articlesPageActions.setView(view));
