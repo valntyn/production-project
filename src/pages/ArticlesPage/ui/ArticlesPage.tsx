@@ -11,7 +11,6 @@ import {
     getArticles,
 } from 'pages/ArticlesPage/model/slices/articlePageSlice';
 import { useSelector } from 'react-redux';
-import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import {
     getArticlesPageIsLoading,
@@ -20,6 +19,7 @@ import {
 import { ArticleView, ViewSelector } from 'entities/Article';
 import { Page } from 'shared/ui/Page/Page';
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage';
+import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage';
 
 import cls from './ArticlesPage.module.scss';
 
@@ -38,12 +38,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
     const view = useSelector(getArticlesPageView);
 
     useEffect(() => {
-        dispatch(articlesPageActions.initState());
-        dispatch(fetchArticlesList(
-            {
-                page: 1,
-            },
-        ));
+        dispatch(initArticlesPage());
     }, [dispatch]);
 
     const onLoadNextPartArticls = useCallback(() => {
@@ -55,7 +50,7 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
     }, [dispatch]);
 
     return (
-        <DynamicModuleLoader reducers={reducers} removeAfterMount>
+        <DynamicModuleLoader reducers={reducers} removeAfterMount={false}>
             <Page
                 onScrollEnd={onLoadNextPartArticls}
                 className={classNames(cls.ArticlesPage, {}, [className])}

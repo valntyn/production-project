@@ -30,10 +30,6 @@ export const loginByUserName = createAsyncThunk<User, LoginByUserNameProps, Thun
 
             dispatch(userActions.setAuthData(response.data));
 
-            if (extra.navigate) {
-                extra.navigate('/about');
-            }
-
             return response.data;
         } catch (e) {
             return rejectWithValue(i18n.t('ввели неправильний логін чи пароль'));
