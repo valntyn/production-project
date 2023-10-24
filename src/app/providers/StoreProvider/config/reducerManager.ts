@@ -38,7 +38,7 @@ export function createReducerManager(
             }
 
             reducers[key] = reducer;
-
+            mountedReducers[key] = true;
             combinedReducer = combineReducers(reducers);
         },
 
@@ -50,7 +50,7 @@ export function createReducerManager(
             delete reducers[key];
 
             keysToRemove.push(key);
-
+            mountedReducers[key] = false;
             combinedReducer = combineReducers(reducers);
         },
     };
