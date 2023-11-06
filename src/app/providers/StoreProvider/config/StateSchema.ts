@@ -14,6 +14,7 @@ import { LoginSchema } from 'features/AuthByUserName';
 import { ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage';
 import { AddCommentFromSchema } from 'features/addCommentForm';
 import { ArticlesPageScheme } from 'pages/ArticlesPage';
+import { ScrollRestorationScheme } from 'widgets/Page/ScrollRestoration';
 
 export interface StateSchema {
     // blank
@@ -21,6 +22,7 @@ export interface StateSchema {
 
     // required
     user: UserSchema,
+    scrollRestoration: ScrollRestorationScheme,
 
     // async
     login?: LoginSchema,
