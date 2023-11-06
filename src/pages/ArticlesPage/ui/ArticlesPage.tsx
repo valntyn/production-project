@@ -6,7 +6,6 @@ import {
     ReducersList,
 } from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
 import {
-    articlesPageActions,
     articlesPageReducer,
     getArticles,
 } from 'pages/ArticlesPage/model/slices/articlePageSlice';
@@ -16,10 +15,10 @@ import {
     getArticlesPageIsLoading,
     getArticlesPageView,
 } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
-import { ArticleView, ViewSelector } from 'entities/Article';
 import { Page } from 'widgets/Page/Page';
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage';
 import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage';
+import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
 
 import cls from './ArticlesPage.module.scss';
 
@@ -45,21 +44,18 @@ const ArticlesPage = ({ className }: ArticlesPageProps) => {
         dispatch(fetchNextArticlesPage());
     }, [dispatch]);
 
-    const onChangeView = useCallback((view: ArticleView) => {
-        dispatch(articlesPageActions.setView(view));
-    }, [dispatch]);
-
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterMount={false}>
             <Page
                 onScrollEnd={onLoadNextPartArticls}
                 className={classNames(cls.ArticlesPage, {}, [className])}
             >
-                <ViewSelector view={view} onViewClick={onChangeView} />
+                <ArticlesPageFilters />
                 <ArticleList
                     isLoading={isLoading}
                     view={view}
                     articles={articles}
+                    className={cls.list}
                 />
             </Page>
         </DynamicModuleLoader>
