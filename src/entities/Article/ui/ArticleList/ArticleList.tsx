@@ -4,6 +4,7 @@ import { Article, ArticleView } from 'entities/Article';
 import {
     ArticleListItemSkeleton,
 } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
+import { Text } from 'shared/ui/Text/Text';
 
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import cls from './ArticleList.module.scss';
@@ -37,6 +38,12 @@ export const ArticleList = memo((props: ArticleListProps) => {
             key={article.id}
         />
     );
+
+    if (!isLoading && !articles.length) {
+        return (
+            <Text title="Нема :)" />
+        );
+    }
 
     return (
         <div className={classNames(cls.ArticleList, {}, [className, cls[view]])}>

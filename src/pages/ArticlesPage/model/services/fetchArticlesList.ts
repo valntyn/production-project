@@ -8,9 +8,14 @@ import {
     getArticlesPageOrder,
     getArticlesPageSearch,
     getArticlesPageSort,
+    getArticlesType,
 } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
+import { addQueryParams } from 'shared/lib/url/addQueryParams';
+import { ArticleType } from 'entities/Article/model/types/article';
 
 interface FetchArticlesListProps {
+    replace?: boolean;
+    page?: number;
 }
 
 export const fetchArticlesList = createAsyncThunk<
@@ -32,8 +37,12 @@ export const fetchArticlesList = createAsyncThunk<
         const sort = getArticlesPageSort(getState());
         const order = getArticlesPageOrder(getState());
         const seacrh = getArticlesPageSearch(getState());
+        const type = getArticlesType(getState());
 
         try {
+            addQueryParams({
+                sort, order, seacrh, type,
+            });
             const response = await extra.api
                 .get<Article[]>('/articles', {
                     params: {
@@ -43,6 +52,7 @@ export const fetchArticlesList = createAsyncThunk<
                         _sort: sort,
                         _order: order,
                         q: seacrh,
+                        type: type === ArticleType.ALL ? undefined : type,
                     },
                 });
 

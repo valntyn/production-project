@@ -19,6 +19,7 @@ import { Page } from 'widgets/Page/Page';
 import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage';
 import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage';
 import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
+import { useSearchParams } from 'react-router-dom';
 
 import cls from './ArticlesPage.module.scss';
 
@@ -31,14 +32,15 @@ interface ArticlesPageProps {
 }
 
 const ArticlesPage = ({ className }: ArticlesPageProps) => {
+    const [searchParams] = useSearchParams();
     const dispatch = useAppDispatch();
     const articles = useSelector(getArticles.selectAll);
     const isLoading = useSelector(getArticlesPageIsLoading);
     const view = useSelector(getArticlesPageView);
 
     useEffect(() => {
-        dispatch(initArticlesPage());
-    }, [dispatch]);
+        dispatch(initArticlesPage(searchParams));
+    }, [dispatch, searchParams]);
 
     const onLoadNextPartArticls = useCallback(() => {
         dispatch(fetchNextArticlesPage());

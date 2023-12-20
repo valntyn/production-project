@@ -4,7 +4,7 @@ import { Article, ArticleView } from 'entities/Article';
 import { ArticlesPageScheme } from 'pages/ArticlesPage';
 import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList';
 import { ARTICLE_VIEW_LOCALSTORAGE_KEY } from 'shared/constants/localstorage';
-import { ArticleSortField } from 'entities/Article/model/types/article';
+import { ArticleSortField, ArticleType } from 'entities/Article/model/types/article';
 import { SortOrder } from 'shared/types';
 
 const articlesAdapter = createEntityAdapter<Article>({
@@ -30,6 +30,7 @@ const articlesPageSlice = createSlice({
         sort: ArticleSortField.CREATED,
         search: '',
         order: 'asc',
+        type: ArticleType.ALL,
     }),
     reducers: {
         setView: (state, action: PayloadAction<ArticleView>) => {
@@ -54,19 +55,31 @@ const articlesPageSlice = createSlice({
         setSearch: (state, action: PayloadAction<string>) => {
             state.search = action.payload;
         },
+        setType: (state, action: PayloadAction<ArticleType>) => {
+            state.type = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchArticlesList.pending, (state) => {
+            .addCase(fetchArticlesList.pending, (state, action) => {
                 state.error = undefined;
                 state.isLoading = true;
+
+                if (action.meta.arg.replace) {
+                    articlesAdapter.removeAll(state);
+                }
             })
             .addCase(
                 fetchArticlesList.fulfilled,
-                (state, action: PayloadAction<Article[]>) => {
+                (state, action) => {
                     state.isLoading = false;
-                    articlesAdapter.addMany(state, action.payload);
-                    state.hasMore = action.payload.length > 0;
+                    state.hasMore = action.payload.length >= state.limit!;
+
+                    if (action.meta.arg.replace) {
+                        articlesAdapter.setAll(state, action.payload);
+                    } else {
+                        articlesAdapter.addMany(state, action.payload);
+                    }
                 },
             )
             .addCase(fetchArticlesList.rejected, (state, action) => {
