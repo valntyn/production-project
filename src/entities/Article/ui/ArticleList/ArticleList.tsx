@@ -1,5 +1,5 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { Article, ArticleView } from 'entities/Article';
 import {
     ArticleListItemSkeleton,
@@ -20,6 +20,7 @@ interface ArticleListProps {
     articles: Article[];
     isLoading?: boolean;
     view?: ArticleView;
+    target?: HTMLAttributeAnchorTarget;
 }
 
 export const ArticleList = memo((props: ArticleListProps) => {
@@ -28,6 +29,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
         articles,
         view = ArticleView.SMALL,
         isLoading,
+        target,
     } = props;
 
     const renderArticle = (article: Article) => (
@@ -36,6 +38,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
             view={view}
             className={cls.card}
             key={article.id}
+            target={target}
         />
     );
 
