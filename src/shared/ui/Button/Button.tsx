@@ -1,6 +1,8 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { Mods, classNames } from 'shared/lib/classNames/classNames';
-import { ButtonHTMLAttributes, FC, memo } from 'react';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import {
+    ButtonHTMLAttributes, CSSProperties, memo, useMemo,
+} from 'react';
 
 import cls from './Button.module.scss';
 
@@ -26,6 +28,7 @@ interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
     square?: boolean;
     size?: ButtonSize;
     disabled?: boolean;
+    border?: string;
 }
 
 export const Button = memo((props: PropsButton) => {
@@ -36,6 +39,7 @@ export const Button = memo((props: PropsButton) => {
         square,
         size = ButtonSize.M,
         disabled,
+        border,
         ...otherProps
     } = props;
 
@@ -44,12 +48,17 @@ export const Button = memo((props: PropsButton) => {
         [cls.disabled]: disabled,
     };
 
+    const styles = useMemo<CSSProperties>(() => ({
+        borderRadius: border,
+    }), [border]);
+
     return (
         <button
             type="button"
             className={classNames(cls.button, mods, [className, cls[theme], cls[size]])}
             {...otherProps}
             disabled={disabled}
+            style={styles}
         >
             {children}
         </button>

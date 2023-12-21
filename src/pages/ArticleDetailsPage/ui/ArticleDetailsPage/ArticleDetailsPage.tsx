@@ -2,7 +2,7 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useEffect } from 'react';
 import { ArticleDetails } from 'entities/Article';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { CommentList } from 'entities/Comment';
 import {
@@ -15,8 +15,6 @@ import {
 } from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { AddCommentForm } from 'features/addCommentForm';
 import { addCommentForArticle } from 'pages/ArticleDetailsPage/services/addCommentForArticle';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { Page } from 'widgets/Page/Page';
 import {
     getArticleRecommendationIsLoading,
@@ -27,6 +25,7 @@ import {
 } from 'pages/ArticleDetailsPage/model/services/fetchArticlesRecommendations';
 import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slices';
 
+import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHeader';
 import {
     getArticleRecommendations,
 } from '../../model/slices/articleDetailsPageRecommendationSlice';
@@ -47,7 +46,6 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const { t } = useTranslation('articles');
     const { id } = useParams<{ id: string }>();
     const dispatch = useDispatch();
-    const navigate = useNavigate();
     const comments = useSelector(getArticleComments.selectAll);
     const recommendations = useSelector(getArticleRecommendations.selectAll);
     const recommendationsIsLoading = useSelector(getArticleRecommendationIsLoading);
@@ -62,10 +60,6 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
         dispatch(addCommentForArticle(text));
     }, [dispatch]);
 
-    const onBackToList = useCallback(() => {
-        navigate(RoutePath.articles);
-    }, [navigate]);
-
     if (!id) {
         return (
             <div className={classNames(cls.ArticleDetailsPage, {}, [className])}>
@@ -77,9 +71,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterMount>
             <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-                <Button theme={ThemeButton.OUTLINE} onClick={onBackToList}>
-                    Повернутися
-                </Button>
+                <ArticleDetailsHeader />
                 <ArticleDetails id={id} />
                 <Text
                     title="Recommendations"

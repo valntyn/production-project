@@ -1,10 +1,11 @@
 import { classNames } from 'shared/lib/classNames/classNames';
-import { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { LoginModal } from 'features/AuthByUserName';
 import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
+import { Text } from 'shared/ui/Text/Text';
 
 import cls from './Navbar.module.scss';
 
@@ -34,6 +35,12 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     if (authData) {
         return (
             <header className={classNames(cls.navbar, {}, [className])}>
+                <Text className={cls.appName} title="REACT PET PROJECT" />
+                <div className={cls.headerButtons}>
+                    <Button>
+                        New Article
+                    </Button>
+                </div>
                 <Button
                     onClick={onLogOut}
                     theme={ThemeButton.CLEAR_INVERTED}
