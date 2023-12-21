@@ -11,7 +11,10 @@ import { CounterSchema } from 'entities/Counter';
 import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUserName';
-import { ArticleDetailsCommentSchema } from 'pages/ArticleDetailsPage';
+import {
+    ArticleDetailsCommentSchema,
+    ArticleDetailsRecommendationSchema,
+} from 'pages/ArticleDetailsPage';
 import { AddCommentFromSchema } from 'features/addCommentForm';
 import { ArticlesPageScheme } from 'pages/ArticlesPage';
 import { ScrollRestorationScheme } from 'widgets/Page/ScrollRestoration';
@@ -29,6 +32,7 @@ export interface StateSchema {
     profile?: ProfileSchema,
     articleDetais?: ArticleDetailsSchema,
     articleDetailsComments?: ArticleDetailsCommentSchema,
+    articleDetailsRecommendation?: ArticleDetailsRecommendationSchema,
     addCommentForm?: AddCommentFromSchema,
     articlesPage?: ArticlesPageScheme,
 }

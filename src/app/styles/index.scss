@@ -20,5 +20,23 @@
 
 .content-page {
     display: flex;
+}
 
+// scrollbar
+/* width */
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Track */
+*::-webkit-scrollbar-track {
+    background: var(--card-bg);
+}
+
+/* Handle */
+*::-webkit-scrollbar-thumb {
+    background: var(--primary-color-inverted);
+    border-radius: 10px;
+    border: 1px solid var(--primary-color);
 }
