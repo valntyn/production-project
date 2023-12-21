@@ -11,10 +11,7 @@ import { CounterSchema } from 'entities/Counter';
 import { ProfileSchema } from 'entities/Profile';
 import { UserSchema } from 'entities/User';
 import { LoginSchema } from 'features/AuthByUserName';
-import {
-    ArticleDetailsCommentSchema,
-    ArticleDetailsRecommendationSchema,
-} from 'pages/ArticleDetailsPage';
+import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import { AddCommentFromSchema } from 'features/addCommentForm';
 import { ArticlesPageScheme } from 'pages/ArticlesPage';
 import { ScrollRestorationScheme } from 'widgets/Page/ScrollRestoration';
@@ -31,10 +28,9 @@ export interface StateSchema {
     login?: LoginSchema,
     profile?: ProfileSchema,
     articleDetais?: ArticleDetailsSchema,
-    articleDetailsComments?: ArticleDetailsCommentSchema,
-    articleDetailsRecommendation?: ArticleDetailsRecommendationSchema,
     addCommentForm?: AddCommentFromSchema,
     articlesPage?: ArticlesPageScheme,
+    articleDetailPage?: ArticleDetailsPageSchema,
 }
 
 export type OptionalRecord<K extends keyof any, T> = {

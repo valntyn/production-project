@@ -25,15 +25,12 @@ import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
 import {
     fetchArticlesRecommendations,
 } from 'pages/ArticleDetailsPage/model/services/fetchArticlesRecommendations';
+import { articleDetailsPageReducer } from 'pages/ArticleDetailsPage/model/slices';
 
 import {
-    articleDetailsPageRecommendationReducer,
     getArticleRecommendations,
 } from '../../model/slices/articleDetailsPageRecommendationSlice';
-import {
-    articleDetailsCommentsReducer,
-    getArticleComments,
-} from '../../model/slices/articleDetailsCommentSlice';
+import { getArticleComments } from '../../model/slices/articleDetailsCommentSlice';
 import cls from './ArticleDetailsPage.module.scss';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 
@@ -42,8 +39,7 @@ interface ArticleDetailsPageProps {
 }
 
 const reducers: ReducersList = {
-    articleDetailsComments: articleDetailsCommentsReducer,
-    articleDetailsRecommendation: articleDetailsPageRecommendationReducer,
+    articleDetailPage: articleDetailsPageReducer,
 };
 
 // todo refactor, divide logic into independent components
