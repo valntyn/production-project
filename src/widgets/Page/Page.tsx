@@ -22,6 +22,8 @@ interface PageProps {
     isSaveScroll?: boolean;
 }
 
+export const PAGE_ID = 'PAGE_ID';
+
 export const Page = memo((props: PageProps) => {
     const {
         className, children, onScrollEnd, isSaveScroll,
@@ -59,6 +61,7 @@ export const Page = memo((props: PageProps) => {
             className={classNames(cls.Page, {}, [className])}
             ref={wrapperRef}
             onScroll={onScroll}
+            id={PAGE_ID}
         >
             {children}
             {onScrollEnd ? <div ref={triggerRef} className={cls.trigger} /> : null}
