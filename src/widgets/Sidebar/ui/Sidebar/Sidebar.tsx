@@ -2,8 +2,8 @@ import { classNames } from 'shared/lib/classNames/classNames';
 import {
     memo, useCallback, useEffect, useState,
 } from 'react';
-import { ThemeSwitcher } from 'shared/ui/ThemeSwitchers';
-import { LangSwitcher } from 'shared/ui/LangSwitcher';
+import { ThemeSwitcher } from 'widgets/ThemeSwitchers';
+import { LangSwitcher } from 'widgets/LangSwitcher';
 import { useSelector } from 'react-redux';
 import { getSidebarItems } from 'widgets/Sidebar/model/selectors/getSidebarItems';
 import { useHover } from 'shared/lib/hooks/useHover';
