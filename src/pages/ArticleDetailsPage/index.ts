@@ -1,9 +1,7 @@
-import {
-    ArticleDetailsCommentSchema,
-} from 'pages/ArticleDetailsPage/model/types/ArticleDetailsCommentSchema';
+import { ArticleDetailsCommentSchema } from './model/types/ArticleDetailsCommentSchema';
 import {
     ArticleDetailsRecommendationSchema,
-} from 'pages/ArticleDetailsPage/model/types/articleDetailsRecommendationSchema';
+} from './model/types/articleDetailsRecommendationSchema';
 
 import { ArticleDetailsPageSchema } from './model/types';
 import {

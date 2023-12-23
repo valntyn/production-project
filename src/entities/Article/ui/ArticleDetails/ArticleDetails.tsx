@@ -3,17 +3,8 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
-import { articleDetailsReducer } from 'entities/Article/model/slice/articleDetailsSlice';
 import { memo, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    fetchArticleById,
-} from 'entities/Article/model/services/fetchArticleByid/fetchArticleById';
-import {
-    getArticleDetailsData,
-    getArticleDetailsError,
-    getArticleDetailsIsLoading,
-} from 'entities/Article/model/selectors/articleDetails';
 import {
     Text, TextAlign, TextSize, TextTheme,
 } from 'shared/ui/Text/Text';
@@ -22,16 +13,19 @@ import { Photo } from 'shared/ui/Photo/Photo';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
-import { ArticleBlock, ArticleBlockType } from 'entities/Article/model/types/article';
-import {
-    ArticleCodeBlockComponent,
-} from 'entities/Article/ui/ArticleCodeBlockComponent/ArticleCodeBlockComponent';
+import { fetchArticleById } from '../../model/services/fetchArticleByid/fetchArticleById';
+import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
+import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
+import { ArticleCodeBlockComponent } from '../ArticleCodeBlockComponent/ArticleCodeBlockComponent';
 import {
     ArticleImagesBlockComponent,
-} from 'entities/Article/ui/ArticleImagesBlockComponent/ArticleImagesBlockComponent';
+} from '../ArticleImagesBlockComponent/ArticleImagesBlockComponent';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
 import {
-    ArticleTextBlockComponent,
-} from 'entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
+    getArticleDetailsData,
+    getArticleDetailsError,
+    getArticleDetailsIsLoading,
+} from '../../model/selectors/articleDetails';
 
 import cls from './ArticleDetails.module.scss';
 
@@ -90,7 +84,6 @@ export const ArticleDetails = memo(({
     let content;
 
     if (isLoading) {
-        console.log(123);
         content = (
             <>
                 <Skeleton className={cls.photo} width={200} height={200} border="50%" />

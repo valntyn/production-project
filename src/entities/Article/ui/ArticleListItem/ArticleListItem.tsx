@@ -4,15 +4,17 @@ import { Text } from 'shared/ui/Text/Text';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
 import { Card } from 'shared/ui/Card/Card';
-import { Article, ArticleView } from 'entities/Article';
 import { Photo } from 'shared/ui/Photo/Photo';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import { ArticleBlockType, ArticleTextBlock } from 'entities/Article/model/types/article';
-import {
-    ArticleTextBlockComponent,
-} from 'entities/Article/ui/ArticleTextBlockComponent/ArticleTextBlockComponent';
 import { AppLink } from 'shared/ui/AppLink/AppLink';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent';
+import {
+    Article,
+    ArticleBlockType,
+    ArticleTextBlock,
+    ArticleView,
+} from '../../model/types/article';
 
 import cls from './ArticleListItem.module.scss';
 

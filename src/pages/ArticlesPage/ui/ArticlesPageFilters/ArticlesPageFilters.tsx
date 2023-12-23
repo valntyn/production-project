@@ -10,15 +10,15 @@ import {
 } from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { ArticleView, ViewSelector } from 'entities/Article';
-import { articlesPageActions } from 'pages/ArticlesPage/model/slices/articlePageSlice';
 import { Card } from 'shared/ui/Card/Card';
 import { Input } from 'shared/ui/Input/Input';
 import { ArticleSortSelector } from 'entities/Article/ui/ArticleSortSelector/ArticleSortSelector';
-import { fetchArticlesList } from 'pages/ArticlesPage/model/services/fetchArticlesList';
 import { useDebounce } from 'shared/lib/hooks/useDebounce';
 import { SortOrder } from 'shared/types';
 import { ArticleSortField, ArticleType } from 'entities/Article/model/types/article';
 import { TabItem, Tabs } from 'shared/ui/Tabs/Tabs';
+import { fetchArticlesList } from '../../model/services/fetchArticlesList';
+import { articlesPageActions } from '../../model/slices/articlePageSlice';
 
 import cls from './ArticlesPageFilters.module.scss';
 

@@ -5,21 +5,18 @@ import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
-import {
-    articlesPageReducer,
-    getArticles,
-} from 'pages/ArticlesPage/model/slices/articlePageSlice';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+import { Page } from 'widgets/Page/Page';
+import { useSearchParams } from 'react-router-dom';
+import { articlesPageReducer, getArticles } from '../model/slices/articlePageSlice';
 import {
     getArticlesPageIsLoading,
     getArticlesPageView,
-} from 'pages/ArticlesPage/model/selectors/articlesPageSelectors';
-import { Page } from 'widgets/Page/Page';
-import { fetchNextArticlesPage } from 'pages/ArticlesPage/model/services/fetchNextArticlesPage';
-import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage';
-import { ArticlesPageFilters } from 'pages/ArticlesPage/ui/ArticlesPageFilters/ArticlesPageFilters';
-import { useSearchParams } from 'react-router-dom';
+} from '../model/selectors/articlesPageSelectors';
+import { fetchNextArticlesPage } from '../model/services/fetchNextArticlesPage';
+import { initArticlesPage } from '../model/services/initArticlesPage';
+import { ArticlesPageFilters } from './ArticlesPageFilters/ArticlesPageFilters';
 
 import cls from './ArticlesPage.module.scss';
 

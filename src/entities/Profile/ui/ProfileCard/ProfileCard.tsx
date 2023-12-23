@@ -1,12 +1,12 @@
-import { Mods, classNames } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Input } from 'shared/ui/Input/Input';
-import { Profile } from 'entities/Profile/model/types/profile';
 import { Spinner } from 'shared/ui/Spinner/Spinner';
 import { Photo } from 'shared/ui/Photo/Photo';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
+import { Profile } from '../../model/types/profile';
 
 import cls from './ProfileCard.module.scss';
 

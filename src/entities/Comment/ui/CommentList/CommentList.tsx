@@ -1,8 +1,8 @@
 import { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Comment } from 'entities/Comment';
 import { Text } from 'shared/ui/Text/Text';
-import { CommentItem } from 'entities/Comment/ui/CommentItem/CommentItem';
+import { Comment } from '../../model/types/comment';
+import { CommentItem } from '../CommentItem/CommentItem';
 
 import cls from './CommentList.module.scss';
 

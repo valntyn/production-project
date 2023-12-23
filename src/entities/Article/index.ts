@@ -1,4 +1,4 @@
-import { ViewSelector } from 'entities/Article/ui/viewSelector/viewSelector';
+import { ViewSelector } from './ui/viewSelector/viewSelector';
 
 import { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
 import { ArticleDetails } from './ui/ArticleDetails/ArticleDetails';

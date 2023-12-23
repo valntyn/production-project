@@ -3,19 +3,19 @@ import { memo, useCallback } from 'react';
 import { Input } from 'shared/ui/Input/Input';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { useSelector } from 'react-redux';
-import {
-    getAddCommentFormError,
-    getAddCommentFormText,
-} from 'features/addCommentForm/model/selectors/addCommentFormSelector';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
-import {
-    addCommentFormActions,
-    addCommentFormReducer,
-} from 'features/addCommentForm/model/slices/addCommentFormSlice';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
+import {
+    getAddCommentFormError,
+    getAddCommentFormText,
+} from '../../model/selectors/addCommentFormSelector';
+import {
+    addCommentFormActions,
+    addCommentFormReducer,
+} from '../../model/slices/addCommentFormSlice';
 
 import cls from './AddCommentForm.module.scss';
 
