@@ -1,11 +1,5 @@
-.ArticleListItem {
-
-}
-
 .LARGE {
     .header {
-        display: flex;
-        align-items: center;
         margin-bottom: 8px;
     }
 
@@ -26,11 +20,6 @@
         width: 100%;
         object-fit: cover;
         margin: 8px 0;
-    }
-
-    .footer {
-        display: flex;
-        align-items: center;
     }
 
     .views {

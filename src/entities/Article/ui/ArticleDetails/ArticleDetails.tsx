@@ -13,6 +13,7 @@ import { Photo } from 'shared/ui/Photo/Photo';
 import EyeIcon from 'shared/assets/icons/eye.svg';
 import CalendarIcon from 'shared/assets/icons/calendar.svg';
 import { Icon } from 'shared/ui/Icon/Icon';
+import { HStack } from 'shared/ui/Stack/HStack/HStack';
 import { fetchArticleById } from '../../model/services/fetchArticleByid/fetchArticleById';
 import { articleDetailsReducer } from '../../model/slice/articleDetailsSlice';
 import { ArticleBlock, ArticleBlockType } from '../../model/types/article';
@@ -104,23 +105,23 @@ export const ArticleDetails = memo(({
     } else {
         content = (
             <>
-                <div className={cls.photoWrapper}>
+                <HStack className={cls.photoWrapper}>
                     <Photo size={200} src={article?.img} className={cls.photo} />
-                </div>
+                </HStack>
                 <Text
                     title={article?.title}
                     className={cls.skeleton}
                     text={article?.subtitle}
                     size={TextSize.M}
                 />
-                <div className={cls.articleInfo}>
+                <HStack gap="10">
                     <Icon Svg={EyeIcon} className={cls.icon} />
                     <Text text={String(article?.views)} />
-                </div>
-                <div className={cls.articleInfo}>
+                </HStack>
+                <HStack gap="10">
                     <Icon Svg={CalendarIcon} className={cls.icon} />
                     <Text text={article?.createdAt} />
-                </div>
+                </HStack>
                 {article?.blocks.map(renderBlock)}
             </>
         );

@@ -6,6 +6,7 @@ import { Spinner } from 'shared/ui/Spinner/Spinner';
 import { Photo } from 'shared/ui/Photo/Photo';
 import { Currency, CurrencySelect } from 'entities/Currency';
 import { Country, CountrySelect } from 'entities/Country';
+import { VStack } from 'shared/ui/Stack/VStack/VStack';
 import { Profile } from '../../model/types/profile';
 
 import cls from './ProfileCard.module.scss';
@@ -81,7 +82,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         />
                     )}
                 </div>
-                <div className={cls.FormWrapper}>
+                <VStack gap="10">
                     <Input
                         value={data?.first}
                         placeholder={t('Ваше ім\'я')}
@@ -136,7 +137,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
                         onChange={onChangeCountry}
                         readonly={readonly}
                     />
-                </div>
+                </VStack>
             </div>
         </div>
     );

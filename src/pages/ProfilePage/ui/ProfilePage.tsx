@@ -21,6 +21,8 @@ import { Country } from 'entities/Country';
 import { Text, TextTheme } from 'shared/ui/Text/Text';
 import { useParams } from 'react-router-dom';
 
+import { VStack } from 'shared/ui/Stack/VStack/VStack';
+import { Page } from 'widgets/Page/Page';
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader';
 
 const reducers: ReducersList = {
@@ -89,33 +91,37 @@ const ProfilePage = memo(({ className }: Props) => {
     }, [dispatch]);
 
     return (
-        <DynamicModuleLoader
-            reducers={reducers}
-            removeAfterMount
-        >
-            <ProfilePageHeader />
-            {!!validateErrors?.length && validateErrors.map((el) => (
-                <Text
-                    theme={TextTheme.ERROR}
-                    text={el}
-                    key={el}
-                />
-            ))}
-            <ProfileCard
-                data={form}
-                error={error}
-                isLoading={isLoading}
-                onChangeFirstName={onChangeFirstName}
-                onChangeLastName={onChangeLastName}
-                onChangeCity={onChangeCity}
-                onChangeAge={onChangeAge}
-                onChangeAvatar={onChangeAvatar}
-                onChangeUsername={onChangeUsername}
-                onChangeCurrency={onChangeCurrency}
-                onChangeCountry={onChangeCountry}
-                readonly={readonly}
-            />
-        </DynamicModuleLoader>
+        <Page>
+            <DynamicModuleLoader
+                reducers={reducers}
+                removeAfterMount
+            >
+                <VStack>
+                    <ProfilePageHeader />
+                    {!!validateErrors?.length && validateErrors.map((el) => (
+                        <Text
+                            theme={TextTheme.ERROR}
+                            text={el}
+                            key={el}
+                        />
+                    ))}
+                    <ProfileCard
+                        data={form}
+                        error={error}
+                        isLoading={isLoading}
+                        onChangeFirstName={onChangeFirstName}
+                        onChangeLastName={onChangeLastName}
+                        onChangeCity={onChangeCity}
+                        onChangeAge={onChangeAge}
+                        onChangeAvatar={onChangeAvatar}
+                        onChangeUsername={onChangeUsername}
+                        onChangeCurrency={onChangeCurrency}
+                        onChangeCountry={onChangeCountry}
+                        readonly={readonly}
+                    />
+                </VStack>
+            </DynamicModuleLoader>
+        </Page>
     );
 });
 

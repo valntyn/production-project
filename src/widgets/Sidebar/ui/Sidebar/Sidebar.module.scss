@@ -10,10 +10,7 @@
 .switches {
     position: absolute;
     bottom: 20px;
-    display: flex;
-    justify-content: center;
     width: 100%;
-    gap: 20px;
 }
 
 .collapseBtn {
@@ -23,9 +20,7 @@
 }
 
 .navItems {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
+    margin-top: 40px;
     margin-left: 30px;
 }
 
@@ -35,4 +30,8 @@
     .switches {
         flex-direction: column;
     }
+}
+
+.svgMenu {
+    fill: var(--secondary-color)
 }

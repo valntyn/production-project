@@ -88,3 +88,9 @@
 .disabled {
     opacity: 0.5;
 }
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

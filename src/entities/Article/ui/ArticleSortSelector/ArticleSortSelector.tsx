@@ -1,9 +1,9 @@
-import { classNames } from 'shared/lib/classNames/classNames';
 import { memo, useMemo } from 'react';
 import { Select, SelectOption } from 'shared/ui/Select/Select';
 import { ArticleSortField } from 'entities/Article/model/types/article';
 import { SortOrder } from 'shared/types';
 
+import { HStack } from 'shared/ui/Stack/HStack/HStack';
 import cls from './ArticleSortSelector.module.scss';
 
 interface ArticleSortSelectorProps {
@@ -46,7 +46,7 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
     ], []);
 
     return (
-        <div className={classNames(cls.ArticleSortSelector, {}, [className])}>
+        <HStack gap="10">
             <Select
                 options={sortFieldOptions}
                 value={sort}
@@ -60,6 +60,6 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
                 label="за"
                 className={cls.order}
             />
-        </div>
+        </HStack>
     );
 });

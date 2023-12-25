@@ -29,6 +29,7 @@ interface PropsButton extends ButtonHTMLAttributes<HTMLButtonElement> {
     size?: ButtonSize;
     disabled?: boolean;
     border?: string;
+    center?: boolean;
 }
 
 export const Button = memo((props: PropsButton) => {
@@ -40,12 +41,14 @@ export const Button = memo((props: PropsButton) => {
         size = ButtonSize.M,
         disabled,
         border,
+        center = false,
         ...otherProps
     } = props;
 
     const mods: Mods = {
         [cls.square]: square,
         [cls.disabled]: disabled,
+        [cls.center]: center,
     };
 
     const styles = useMemo<CSSProperties>(() => ({

@@ -5,11 +5,12 @@ import { ArticleImageBlock } from 'entities/Article/model/types/article';
 import { Text, TextAlign } from 'shared/ui/Text/Text';
 import { Photo } from 'shared/ui/Photo/Photo';
 
+import { VStack } from 'shared/ui/Stack/VStack/VStack';
 import cls from './ArticleImagesBlockComponent.module.scss';
 
 interface ArticleImagesBlockComponentProps {
     className?: string;
-    block: ArticleImageBlock
+    block: ArticleImageBlock;
 }
 
 export const ArticleImagesBlockComponent = memo(({
@@ -19,13 +20,14 @@ export const ArticleImagesBlockComponent = memo(({
     const { t } = useTranslation();
 
     return (
-        <div
+        <VStack
+            gap="10"
             className={classNames(cls.ArticleImagesBlockComponent, {}, [className])}
         >
             <Photo src={block.src} className={cls.img} alt={block.src} size={400} />
             {block.title && (
                 <Text text={block.title} align={TextAlign.CENTER} />
             )}
-        </div>
+        </VStack>
     );
 });

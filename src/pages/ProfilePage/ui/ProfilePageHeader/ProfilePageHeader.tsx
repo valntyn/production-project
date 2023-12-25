@@ -13,6 +13,7 @@ import { useCallback } from 'react';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
 import { getUserAuthData } from 'entities/User';
 
+import { HStack } from 'shared/ui/Stack/HStack/HStack';
 import cls from './ProfilePageHeader.module.scss';
 
 interface ProfilePageHeaderProps {
@@ -43,40 +44,37 @@ export const ProfilePageHeader = ({ className }: ProfilePageHeaderProps) => {
     }, [dispatch, onCancelEdit]);
 
     return (
-        <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
+        <HStack
+            justify="between"
+            className={classNames(cls.ProfilePageHeader, {}, [className])}
+        >
             <Text title={t('Профіль')} />
-            <div className={cls.buttonWrapper}>
-                {canEdit && (
-                    <div>
-                        {readonly ? (
-                            <Button
-                                className={cls.headerBtn}
-                                theme={ThemeButton.OUTLINE}
-                                onClick={onEdit}
-                            >
-                                {t('Редагувати')}
-                            </Button>
-                        ) : (
-                            <div className={cls.editButtonWrapper}>
-                                <Button
-                                    className={cls.headerBtn}
-                                    theme={ThemeButton.OUTLINE_GREEN}
-                                    onClick={onSave}
-                                >
-                                    {t('Зберегти')}
-                                </Button>
-                                <Button
-                                    className={cls.headerBtn}
-                                    theme={ThemeButton.OUTLINE_RED}
-                                    onClick={onCancelEdit}
-                                >
-                                    {t('Скасувати')}
-                                </Button>
-                            </div>
-                        )}
-                    </div>
-                )}
-            </div>
-        </div>
+            {readonly ? (
+                <Button
+                    className={cls.headerBtn}
+                    theme={ThemeButton.OUTLINE}
+                    onClick={onEdit}
+                >
+                    {t('Редагувати')}
+                </Button>
+            ) : (
+                <HStack gap="10">
+                    <Button
+                        className={cls.headerBtn}
+                        theme={ThemeButton.OUTLINE_GREEN}
+                        onClick={onSave}
+                    >
+                        {t('Зберегти')}
+                    </Button>
+                    <Button
+                        className={cls.headerBtn}
+                        theme={ThemeButton.OUTLINE_RED}
+                        onClick={onCancelEdit}
+                    >
+                        {t('Скасувати')}
+                    </Button>
+                </HStack>
+            )}
+        </HStack>
     );
 };
