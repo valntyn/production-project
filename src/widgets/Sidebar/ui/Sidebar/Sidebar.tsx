@@ -35,7 +35,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
     }, []);
 
     return (
-        <menu
+        <aside
             {...isFixed && { ...bindHover }}
             className={classNames(
                 cls.sidebar,
@@ -45,7 +45,11 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                 [className],
             )}
         >
-            <VStack gap="10" className={cls.navItems}>
+            <VStack
+                role="navigation"
+                gap="10"
+                className={cls.navItems}
+            >
                 {sideBarItemsList.map((item) => (
                     <SidebarItem
                         item={item}
@@ -73,6 +77,6 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
                         </Button>
                     )}
             </HStack>
-        </menu>
+        </aside>
     );
 });

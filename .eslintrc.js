@@ -54,6 +54,7 @@ module.exports = {
                     'direction',
                     'gap',
                     'align',
+                    'navigation',
                 ],
             },
         ],

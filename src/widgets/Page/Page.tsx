@@ -48,7 +48,6 @@ export const Page = memo((props: PageProps) => {
 
     const onScroll = useThrottle((e: UIEvent<HTMLDivElement>) => {
         if (!isSaveScroll) {
-            console.log('check scroll');
             dispatch(scrollRestorationActions.setScrollPosition({
                 position: e.currentTarget.scrollTop,
                 path: pathname,
@@ -57,7 +56,7 @@ export const Page = memo((props: PageProps) => {
     }, 1000);
 
     return (
-        <section
+        <main
             className={classNames(cls.Page, {}, [className])}
             ref={wrapperRef}
             onScroll={onScroll}
@@ -65,6 +64,6 @@ export const Page = memo((props: PageProps) => {
         >
             {children}
             {onScrollEnd ? <div ref={triggerRef} className={cls.trigger} /> : null}
-        </section>
+        </main>
     );
 });
