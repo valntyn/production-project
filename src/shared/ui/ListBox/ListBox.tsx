@@ -46,7 +46,7 @@ export const ListBox = memo((props: ListBoxProps) => {
 
     return (
         <HStack gap="4" align="center">
-            {label && <span className={cls.label}>{`${label}>`}</span>}
+            {label && <span>{`${label}>`}</span>}
             <HListBox
                 as="div"
                 className={classNames(cls.ListBox, { [cls.readonly]: readonly }, [className])}
