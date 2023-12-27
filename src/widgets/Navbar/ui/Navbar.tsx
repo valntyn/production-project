@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUserAuthData, userActions } from 'entities/User';
 import { Text } from 'shared/ui/Text/Text';
 
+import { MenuDropdown } from 'shared/ui/MenuDropdown/MenuDropdown';
+import { Photo } from 'shared/ui/Photo/Photo';
+import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -41,13 +44,28 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         New Article
                     </Button>
                 </div>
-                <Button
-                    onClick={onLogOut}
-                    theme={ThemeButton.CLEAR_INVERTED}
-                    className={cls.links}
-                >
-                    {t('Вийти')}
-                </Button>
+                <MenuDropdown
+                    items={[
+                        { content: '123' },
+                        {
+                            content: t('Профіль'),
+                            href: RoutePath.profile + authData.id,
+                        },
+                        {
+                            content: t('Вийти'),
+                            onClick: onLogOut,
+                        },
+                    ]}
+                    className={cls.dropdown}
+                    trigger={(
+                        <Photo
+                            size={40}
+                            className={cls.profile}
+                            src={authData.avatar}
+                        />
+                    )}
+                    direction="bottom left"
+                />
             </header>
         );
     }

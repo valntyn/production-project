@@ -33,6 +33,7 @@ export const CurrencySelect = ({
             items={options}
             label={t('Оберіть валюту')}
             defaultValue={t('Оберіть валюту')}
+            direction="top right"
             className={className}
         />
     );

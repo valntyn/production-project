@@ -29,12 +29,13 @@ export const CountrySelect = ({
     return (
         <ListBox
             defaultValue={t('Країна')}
+            label={t('Країна')}
             readonly={readonly}
             onChange={onChangeHandler}
             items={options}
             className={className}
             value={value}
-            direction="top"
+            direction="bottom right"
         />
     );
 };
