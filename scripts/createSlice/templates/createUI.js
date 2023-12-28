@@ -24,10 +24,6 @@ module.exports = async (layer, sliceName) => {
                 componentTemplate(componentName),
             );
             await fs.writeFile(
-                resolveUIPath(componentName, `${componentName}.stories.tsx`),
-                storyTemplate(layer, componentName),
-            );
-            await fs.writeFile(
                 resolveUIPath(componentName, `${componentName}.module.scss`),
                 styleTemplate(componentName),
             );

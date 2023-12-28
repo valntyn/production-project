@@ -12,9 +12,7 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { AddCommentForm } from 'features/addCommentForm';
 import { Page } from 'widgets/Page/Page';
-import { ArticleList } from 'entities/Article/ui/ArticleList/ArticleList';
-import { fetchArticlesRecommendations } from '../../model/services/fetchArticlesRecommendations';
-import { getArticleRecommendationIsLoading } from '../../model/selectors/recommendation';
+import { ArticleRecommendationsList } from 'features/articleRecommendationsList';
 import { addCommentForArticle } from '../../services/addCommentForArticle';
 import { articleDetailsPageReducer } from '../../model/slices';
 import {
@@ -22,9 +20,6 @@ import {
 } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 
 import { ArticleDetailsHeader } from '../ArticleDetailsHeader/ArticleDetailsHeader';
-import {
-    getArticleRecommendations,
-} from '../../model/slices/articleDetailsPageRecommendationSlice';
 import { getArticleComments } from '../../model/slices/articleDetailsCommentSlice';
 import cls from './ArticleDetailsPage.module.scss';
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
@@ -43,13 +38,10 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const { id } = useParams<{ id: string }>();
     const dispatch = useDispatch();
     const comments = useSelector(getArticleComments.selectAll);
-    const recommendations = useSelector(getArticleRecommendations.selectAll);
-    const recommendationsIsLoading = useSelector(getArticleRecommendationIsLoading);
     const isLoading = useSelector(getArticleCommentsIsLoading);
 
     useEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
-        dispatch(fetchArticlesRecommendations());
     }, [dispatch, id]);
 
     const onSendComment = useCallback((text) => {
@@ -69,17 +61,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
             <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
                 <ArticleDetailsHeader />
                 <ArticleDetails id={id} />
-                <Text
-                    title="Recommendations"
-                    className={cls.commentTitle}
-                    size={TextSize.L}
-                />
-                <ArticleList
-                    articles={recommendations}
-                    isLoading={recommendationsIsLoading}
-                    className={cls.recommendations}
-                    target="_blank"
-                />
+                <ArticleRecommendationsList />
                 <Text
                     title="Comment"
                     className={cls.commentTitle}
