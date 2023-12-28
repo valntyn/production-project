@@ -15,6 +15,7 @@ import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage';
 import { AddCommentFromSchema } from 'features/addCommentForm';
 import { ArticlesPageScheme } from 'pages/ArticlesPage';
 import { ScrollRestorationScheme } from 'widgets/Page/ScrollRestoration';
+import { rtkApi } from 'shared/api/rtkApi';
 
 export interface StateSchema {
     // blank
@@ -23,6 +24,7 @@ export interface StateSchema {
     // required
     user: UserSchema,
     scrollRestoration: ScrollRestorationScheme,
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
     // async
     login?: LoginSchema,
