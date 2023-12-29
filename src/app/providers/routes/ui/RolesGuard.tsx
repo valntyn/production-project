@@ -23,9 +23,8 @@ export function RolesGuard({ children, roles }: RolesGuardProps) {
         return roles.some((requiredRole) => userRoles?.includes(requiredRole));
     }, [roles, userRoles]);
 
-    // todo create page guard
     if (!hasRequiredRoles) {
-        return <Navigate to={RoutePath.main} state={{ from: location }} replace />;
+        return <Navigate to={RoutePath.guard} state={{ from: location }} replace />;
     }
 
     return children;

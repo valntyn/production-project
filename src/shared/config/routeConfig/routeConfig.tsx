@@ -8,6 +8,7 @@ import { RouteProps } from 'react-router-dom';
 import { ArticleEditPage } from 'pages/ArticleEditPage';
 import { AdminPanelPage } from 'pages/AdminPanelPage';
 import { UserRole } from 'entities/User/model/types/user';
+import { GuardPage } from 'pages/GuardPage';
 
 export type AppRouteProps = RouteProps & {
     authOnly?: boolean;
@@ -25,6 +26,7 @@ export enum AppRouter {
     ADMIN_PANEL = 'admin_panel',
 
     // LAST
+    GUARD = 'guard',
     NOTFOUND = 'notfound',
 }
 
@@ -32,12 +34,15 @@ export const RoutePath: Record<AppRouter, string> = {
     [AppRouter.MAIN]: '/',
     [AppRouter.ABOUT]: '/about',
     [AppRouter.PROFILE]: '/profile/', // + id
-    [AppRouter.NOTFOUND]: '*',
     [AppRouter.ARTICLES]: '/articles',
     [AppRouter.ARTICLE_DETAILS]: '/articles/', // + :id
     [AppRouter.ARTICLE_CREATE]: '/articles/create',
     [AppRouter.ARTICLE_EDIT]: '/articles/:id/edit',
     [AppRouter.ADMIN_PANEL]: '/admin-panel',
+
+    // special
+    [AppRouter.GUARD]: '/guard',
+    [AppRouter.NOTFOUND]: '*',
 };
 
 export const routeConfig: Record<AppRouter, AppRouteProps> = {
@@ -85,5 +90,9 @@ export const routeConfig: Record<AppRouter, AppRouteProps> = {
     [AppRouter.NOTFOUND]: {
         path: RoutePath.notfound,
         element: <NotFoundPage />,
+    },
+    [AppRouter.GUARD]: {
+        path: RoutePath.guard,
+        element: <GuardPage />,
     },
 };
