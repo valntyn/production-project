@@ -4,7 +4,6 @@ import { Button, ThemeButton } from 'shared/ui/Button/Button';
 import { useNavigate } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useSelector } from 'react-redux';
-import { getUserAuthData } from 'entities/User';
 import { getArticleDetailsData } from 'entities/Article/model/selectors/articleDetails';
 import { getCanEditArticle } from '../../model/selectors/article';
 
@@ -16,7 +15,6 @@ interface ArticleDetailsHeaderProps {
 
 export const ArticleDetailsHeader = memo((props: ArticleDetailsHeaderProps) => {
     const { className } = props;
-    const userData = useSelector(getUserAuthData);
     const article = useSelector(getArticleDetailsData);
     const canEdit = useSelector(getCanEditArticle);
     const navigate = useNavigate();

@@ -19,6 +19,10 @@ interface CommentItemProps {
 export const CommentItem = memo((props: CommentItemProps) => {
     const { className, comment, isLoading } = props;
 
+    if (!comment) {
+        return null;
+    }
+
     if (isLoading) {
         return (
             <div
