@@ -6,9 +6,12 @@ import { NotFoundPage } from 'pages/NotFoundPage';
 import { ProfilePage } from 'pages/ProfilePage';
 import { RouteProps } from 'react-router-dom';
 import { ArticleEditPage } from 'pages/ArticleEditPage';
+import { AdminPanelPage } from 'pages/AdminPanelPage';
+import { UserRole } from 'entities/User/model/types/user';
 
 export type AppRouteProps = RouteProps & {
     authOnly?: boolean;
+    roles?: UserRole[];
 }
 
 export enum AppRouter {
@@ -19,6 +22,7 @@ export enum AppRouter {
     ARTICLE_DETAILS = 'article_details',
     ARTICLE_CREATE = 'article_create',
     ARTICLE_EDIT = 'article_edit',
+    ADMIN_PANEL = 'admin_panel',
 
     // LAST
     NOTFOUND = 'notfound',
@@ -33,6 +37,7 @@ export const RoutePath: Record<AppRouter, string> = {
     [AppRouter.ARTICLE_DETAILS]: '/articles/', // + :id
     [AppRouter.ARTICLE_CREATE]: '/articles/create',
     [AppRouter.ARTICLE_EDIT]: '/articles/:id/edit',
+    [AppRouter.ADMIN_PANEL]: '/admin-panel',
 };
 
 export const routeConfig: Record<AppRouter, AppRouteProps> = {
@@ -68,6 +73,12 @@ export const routeConfig: Record<AppRouter, AppRouteProps> = {
         path: `${RoutePath.article_edit}`,
         element: <ArticleEditPage />,
         authOnly: true,
+    },
+    [AppRouter.ADMIN_PANEL]: {
+        path: `${RoutePath.admin_panel}`,
+        element: <AdminPanelPage />,
+        authOnly: true,
+        roles: [UserRole.MANAGER, UserRole.ADMIN],
     },
 
     // last
