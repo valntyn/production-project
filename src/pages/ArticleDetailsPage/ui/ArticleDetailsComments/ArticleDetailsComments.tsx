@@ -4,6 +4,7 @@ import { Text, TextSize } from 'shared/ui/Text/Text';
 import { AddCommentForm } from 'features/addCommentForm';
 import { CommentList } from 'entities/Comment';
 import { useDispatch, useSelector } from 'react-redux';
+import { VStack } from 'shared/ui/Stack/VStack/VStack';
 import { getArticleComments } from '../../model/slices/articleDetailsCommentSlice';
 import {
     fetchCommentsByArticleId,
@@ -27,22 +28,22 @@ export const ArticleDetailsComments = memo((props: ArticleDetailsCommentsProps) 
         dispatch(fetchCommentsByArticleId(id));
     }, [dispatch, id]);
 
-    const onSendComment = useCallback((text) => {
+    const onSendComment = useCallback((text: string) => {
         dispatch(addCommentForArticle(text));
     }, [dispatch]);
 
     return (
-        <div className={classNames('', {}, [className])}>
+        <VStack max className={classNames('', {}, [className])}>
             <Text
                 title="Comment"
                 className={cls.commentTitle}
                 size={TextSize.L}
             />
-            <AddCommentForm onSendComment={onSendComment} />
+            <AddCommentForm onSendComment={onSendComment} className={cls.form} />
             <CommentList
                 comments={comments}
                 isLoading={isLoading}
             />
-        </div>
+        </VStack>
     );
 });

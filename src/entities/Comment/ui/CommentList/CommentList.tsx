@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text } from 'shared/ui/Text/Text';
+import { VStack } from 'shared/ui/Stack/VStack/VStack';
 import { Comment } from '../../model/types/comment';
 import { CommentItem } from '../CommentItem/CommentItem';
 
@@ -16,7 +17,8 @@ export const CommentList = memo((props: CommentListProps) => {
     const { className, isLoading, comments } = props;
 
     return (
-        <div
+        <VStack
+            max
             className={classNames(
                 cls.CommentList,
                 {},
@@ -32,6 +34,6 @@ export const CommentList = memo((props: CommentListProps) => {
                     />
                 ))
                 : <Text text="Comments are upsent" />}
-        </div>
+        </VStack>
     );
 });

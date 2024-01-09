@@ -25,7 +25,6 @@ export const ArticleInfiniteList = memo((props: ArticleInfiniteListProps) => {
                 isLoading={isLoading}
                 view={view}
                 articles={articles}
-                className={cls.list}
             />
         </div>
     );

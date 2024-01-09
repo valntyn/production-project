@@ -6,5 +6,6 @@ import type { Article } from './model/types/article';
 import { ArticleView } from './model/types/article';
 
 export {
-    ArticleDetails, Article, ArticleView, ArticleDetailsSchema, ViewSelector,
+    ArticleDetails, Article, ArticleView, ViewSelector,
 };
+export type { ArticleDetailsSchema };

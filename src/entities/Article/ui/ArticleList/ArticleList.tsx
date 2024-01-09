@@ -87,6 +87,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
             }) => (
                 <div
                     className={classNames(cls.ArticleList, {}, [className, cls[view]])}
+                    // @ts-ignore
                     ref={registerChild}
                 >
                     {virtualized ? (

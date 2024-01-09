@@ -10,8 +10,8 @@ import {
 } from 'widgets/Page/ScrollRestoration/model/slices/ScrollRestorationSlice';
 
 export {
-    ScrollRestorationScheme,
     getScrollRestorationByPath,
     scrollRestorationReducer,
     scrollRestorationActions,
 };
+export type { ScrollRestorationScheme };

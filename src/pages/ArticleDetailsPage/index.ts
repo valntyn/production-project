@@ -10,6 +10,8 @@ import {
 
 export {
     ArticleDetailsPage,
+};
+export type {
     ArticleDetailsCommentSchema,
     ArticleDetailsRecommendationSchema,
     ArticleDetailsPageSchema,
