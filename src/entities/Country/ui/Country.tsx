@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import { ListBox } from 'shared/ui/ListBox/ListBox';
 
-import { Country } from 'entities/Country';
+import { Country } from '../consts/consts';
 
 interface CountrySelectProps {
     value?: string;
