@@ -24,7 +24,7 @@ const reducers: ReducersList = {
 };
 
 const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
-    const { t } = useTranslation('articles');
+    const { t } = useTranslation();
     const { id } = useParams<{ id: string }>();
 
     if (!id) {
