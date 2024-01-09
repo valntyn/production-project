@@ -2,8 +2,10 @@ import { Fragment, memo, ReactNode } from 'react';
 import { Menu } from '@headlessui/react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { DropdownDirection } from 'shared/types/ui';
-import { AppLink } from 'shared/ui/AppLink/AppLink';
+import { AppLink } from '../../../AppLink/AppLink';
+import { mapDirectionClass } from '../styles/const';
 import cls from './MenuDropdown.module.scss';
+import popUpCls from '../styles/popup.module.scss';
 
 export interface DropdownItem {
     disabled?: boolean;
@@ -20,14 +22,6 @@ interface MenuProps {
     direction?: DropdownDirection;
 }
 
-// todo combine functionality later
-const mapDirectionClass: Record<DropdownDirection, string> = {
-    'bottom left': cls.optionBottomLeft,
-    'bottom right': cls.optionBottomRight,
-    'top left': cls.optionTopLeft,
-    'top right': cls.optionTopRight,
-};
-
 export const MenuDropdown = memo((props: MenuProps) => {
     const {
         className, readonly, items, trigger, direction = 'bottom left',
@@ -38,10 +32,12 @@ export const MenuDropdown = memo((props: MenuProps) => {
     return (
         <Menu
             as="menu"
-            className={classNames(cls.Menu, { [cls.readonly]: readonly }, [className])}
+            className={
+                classNames('', { [popUpCls.readonly]: readonly }, [className, popUpCls.popup])
+            }
         >
             <Menu.Button
-                className={cls.trigger}
+                className={popUpCls.trigger}
             >
                 {trigger ?? 'Open'}
             </Menu.Button>

@@ -9,9 +9,13 @@ import {
 } from 'entities/User';
 import { Text } from 'shared/ui/Text/Text';
 
-import { MenuDropdown } from 'shared/ui/MenuDropdown/MenuDropdown';
+import { MenuDropdown } from 'shared/ui/Popups/components/MenuDropdown/MenuDropdown';
 import { Photo } from 'shared/ui/Photo/Photo';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { HStack } from 'shared/ui/Stack/HStack/HStack';
+import { Icon } from 'shared/ui/Icon/Icon';
+import AlarmIcon from 'shared/assets/icons/alarm.svg';
+import { Popover } from 'shared/ui/Popups';
 import cls from './Navbar.module.scss';
 
 interface NavbarProps {
@@ -50,31 +54,43 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         New Article
                     </Button>
                 </div>
-                <MenuDropdown
-                    items={[
-                        ...(isAdminPanelAvailable ? [{
-                            content: t('Настройка'),
-                            href: RoutePath.admin_panel,
-                        }] : []),
-                        {
-                            content: t('Профіль'),
-                            href: RoutePath.profile + authData.id,
-                        },
-                        {
-                            content: t('Вийти'),
-                            onClick: onLogOut,
-                        },
-                    ]}
-                    className={cls.dropdown}
-                    trigger={(
-                        <Photo
-                            size={40}
-                            className={cls.profile}
-                            src={authData.avatar}
-                        />
-                    )}
-                    direction="bottom left"
-                />
+                <HStack gap="16" className={cls.actions} align="center" justify="center">
+                    <Button
+                        theme={ThemeButton.CLEAR}
+                    >
+                        <Popover
+                            trigger={<Icon Svg={AlarmIcon} inverted />}
+                            direction="bottom left"
+                        >
+                            123
+                        </Popover>
+                    </Button>
+                    <MenuDropdown
+                        className={cls.dropdown}
+                        items={[
+                            ...(isAdminPanelAvailable ? [{
+                                content: t('Настройка'),
+                                href: RoutePath.admin_panel,
+                            }] : []),
+                            {
+                                content: t('Профіль'),
+                                href: RoutePath.profile + authData.id,
+                            },
+                            {
+                                content: t('Вийти'),
+                                onClick: onLogOut,
+                            },
+                        ]}
+                        trigger={(
+                            <Photo
+                                size={40}
+                                className={cls.profile}
+                                src={authData.avatar}
+                            />
+                        )}
+                        direction="bottom left"
+                    />
+                </HStack>
             </header>
         );
     }

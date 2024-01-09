@@ -1,0 +1,12 @@
+.options {
+    max-width: 140px;
+    background: var(--card-bg);
+    position: absolute;
+    z-index: 100;
+    border-radius: 12px;
+    box-shadow: 4px 4px 8px var(--card-bg);
+}
+
+.item {
+    padding: 10px 20px;
+}
