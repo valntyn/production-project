@@ -2,7 +2,8 @@ import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import { ListBox } from 'shared/ui/ListBox/ListBox';
-import { Country } from '../model/types/types';
+
+import { Country } from 'entities/Country';
 
 interface CountrySelectProps {
     value?: string;

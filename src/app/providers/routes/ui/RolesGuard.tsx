@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { Navigate, useLocation } from 'react-router-dom';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
 import { useMemo } from 'react';
-import { UserRole } from 'entities/User/model/types/user';
 import { getUserRoles } from 'entities/User/model/selectors/roleSelector';
+import { UserRole } from 'entities/User/consts/consts';
 
 export interface RolesGuardProps {
     children: JSX.Element;
