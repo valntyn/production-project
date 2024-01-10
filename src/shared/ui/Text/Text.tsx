@@ -5,6 +5,7 @@ import cls from './Text.module.scss';
 
 export enum TextTheme {
     PRIMARY = 'primary',
+    SECONDARY = 'secondary',
     ERROR = 'error'
 }
 

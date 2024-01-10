@@ -12,14 +12,23 @@
     align-items: center;
 }
 
-.content {
-    padding: 20px;
+.wrapper {
     border-radius: 4px;
-    background: var(--bg-color);
 
-    transition: 0.3s transform;
     transform: scale(0.5);
     max-width: 60%;
+}
+
+.titleWrapper {
+    cursor: grab;
+    background: var(--secondary-color);
+    border-radius: 4px;
+    padding: 4px;
+}
+
+.content {
+    padding: 20px;
+    background: var(--bg-color);
 }
 
 .opened {
@@ -27,13 +36,13 @@
     opacity: 1;
     z-index: var(--modal-z-index);
 
-    .content {
+    .wrapper {
         transform: scale(1);
     }
 }
 
 .isClosing {
-    .content {
+    .wrapper {
         transform: scale(0.2);
     }
 }

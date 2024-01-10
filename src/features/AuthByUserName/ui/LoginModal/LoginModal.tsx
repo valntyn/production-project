@@ -17,6 +17,7 @@ export const LoginModal = ({ className, onClose, isOpen }: LoginModalProps) => (
         onClose={onClose}
         isOpen={isOpen}
         className={classNames(cls.LoginModal, {}, [className])}
+        title="Login"
         lazy
     >
         <Suspense fallback={<Spinner />}>
