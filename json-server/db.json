@@ -11,6 +11,40 @@
       "userId": "2"
     }
   ],
+  "notifications": [
+    {
+      "id": "1",
+      "title": "Повідомлення 1",
+      "description": "Something happened",
+      "userId": "1"
+    },
+    {
+      "id": "2",
+      "title": "Повідомлення 2",
+      "description": "Something happened",
+      "userId": "1",
+      "href": "http://localhost:3000/admin"
+    },
+    {
+      "id": "3",
+      "title": "Повідомлення 3",
+      "description": "Something happened",
+      "userId": "1",
+      "href": "http://localhost:3000/admin"
+    },
+    {
+      "id": "4",
+      "title": "Повідомлення 4",
+      "description": "Something happened",
+      "userId": "1"
+    },
+    {
+      "id": "5",
+      "title": "Повідомлення 1",
+      "description": "Something happened",
+      "userId": "2"
+    }
+  ],
   "articles": [
     {
       "id": "1",
