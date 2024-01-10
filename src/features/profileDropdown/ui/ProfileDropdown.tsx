@@ -1,12 +1,12 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import React, { memo, useCallback } from 'react';
-import { MenuDropdown } from 'shared/ui/Popups';
-import { RoutePath } from 'shared/config/routeConfig/routeConfig';
-import { Photo } from 'shared/ui/Photo/Photo';
+import { MenuDropdown } from '@/shared/ui/Popups';
+import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
+import { Photo } from '@/shared/ui/Photo/Photo';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     getUserAuthData, isUserAdmin, isUserManager, userActions,
-} from 'entities/User';
+} from '@/entities/User';
 import { useTranslation } from 'react-i18next';
 import cls from './ProfileDropdown.module.scss';
 

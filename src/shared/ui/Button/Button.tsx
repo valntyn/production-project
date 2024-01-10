@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { classNames, Mods } from '@/shared/lib/classNames/classNames';
 import {
     ButtonHTMLAttributes, CSSProperties, memo, useMemo,
 } from 'react';

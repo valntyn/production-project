@@ -1,13 +1,13 @@
 import {
     ScrollRestorationScheme,
-} from 'widgets/Page/ScrollRestoration/model/types/ScrollRestorationScheme';
+} from '@/widgets/Page/ScrollRestoration/model/types/ScrollRestorationScheme';
 import {
     getScrollRestorationByPath,
-} from 'widgets/Page/ScrollRestoration/model/selectors/scrollRestorationSelectors';
+} from '@/widgets/Page/ScrollRestoration/model/selectors/scrollRestorationSelectors';
 import {
     scrollRestorationActions,
     scrollRestorationReducer,
-} from 'widgets/Page/ScrollRestoration/model/slices/ScrollRestorationSlice';
+} from '@/widgets/Page/ScrollRestoration/model/slices/ScrollRestorationSlice';
 
 export {
     getScrollRestorationByPath,

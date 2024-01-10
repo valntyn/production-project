@@ -1,13 +1,13 @@
 import { memo } from 'react';
 
-import { VStack } from 'shared/ui/Stack/VStack/VStack';
-import { Page } from 'widgets/Page/Page';
-import { EditableProfileCard } from 'features/editableProfileCard';
+import { VStack } from '@/shared/ui/Stack/VStack/VStack';
+import { Page } from '@/widgets/Page/Page';
+import { EditableProfileCard } from '@/features/editableProfileCard';
 import { useParams } from 'react-router-dom';
-import { Text, TextSize } from 'shared/ui/Text/Text';
+import { Text, TextSize } from '@/shared/ui/Text/Text';
 import {
     EditableProfileCardHeader,
-} from 'features/editableProfileCard/ui/EditableProfileCardHeader/EditableProfileCardHeader';
+} from '@/features/editableProfileCard/ui/EditableProfileCardHeader/EditableProfileCardHeader';
 
 interface Props {
     className?: string;

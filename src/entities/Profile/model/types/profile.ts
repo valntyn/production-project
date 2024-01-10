@@ -1,4 +1,4 @@
-import { Currency } from 'entities/Currency';
+import { Currency } from '@/entities/Currency';
 
 export interface Profile {
     id?: string;

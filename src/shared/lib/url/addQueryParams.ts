@@ -1,4 +1,4 @@
-import { OptionalRecord } from 'app/providers/StoreProvider/config/StateSchema';
+import { OptionalRecord } from '@/app/providers/StoreProvider/config/StateSchema';
 
 export function getQueryParams(params: OptionalRecord<string, string>) {
     const searchParams = new URLSearchParams(window.location.search);

@@ -1,15 +1,15 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import { Input } from 'shared/ui/Input/Input';
+import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import { Input } from '@/shared/ui/Input/Input';
 import { useSelector, useStore } from 'react-redux';
 import { memo, useCallback, useEffect } from 'react';
-import { Text, TextTheme } from 'shared/ui/Text/Text';
-import { ReduxStoreWithManager } from 'app/providers/StoreProvider';
+import { Text, TextTheme } from '@/shared/ui/Text/Text';
+import { ReduxStoreWithManager } from '@/app/providers/StoreProvider';
 import {
     DynamicModuleLoader, ReducersList,
-} from 'shared/lib/components/DynamicModule/DynamicModuleLoader';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch';
+} from '@/shared/lib/components/DynamicModule/DynamicModuleLoader';
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch';
 
 import {
     getLoginUsername,

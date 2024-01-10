@@ -1,17 +1,17 @@
-import { classNames } from 'shared/lib/classNames/classNames';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     memo, useCallback, useEffect, useState,
 } from 'react';
-import { ThemeSwitcher } from 'widgets/ThemeSwitchers';
-import { LangSwitcher } from 'widgets/LangSwitcher';
+import { ThemeSwitcher } from '@/widgets/ThemeSwitchers';
+import { LangSwitcher } from '@/widgets/LangSwitcher';
 import { useSelector } from 'react-redux';
-import { getSidebarItems } from 'widgets/Sidebar/model/selectors/getSidebarItems';
-import { useHover } from 'shared/lib/hooks/useHover';
-import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import StaticIcon from 'shared/assets/icons/static-menu.svg';
+import { getSidebarItems } from '@/widgets/Sidebar/model/selectors/getSidebarItems';
+import { useHover } from '@/shared/lib/hooks/useHover';
+import { Button, ThemeButton } from '@/shared/ui/Button/Button';
+import StaticIcon from '@/shared/assets/icons/static-menu.svg';
 
-import { VStack } from 'shared/ui/Stack/VStack/VStack';
-import { HStack } from 'shared/ui/Stack/HStack/HStack';
+import { VStack } from '@/shared/ui/Stack/VStack/VStack';
+import { HStack } from '@/shared/ui/Stack/HStack/HStack';
 import cls from './Sidebar.module.scss';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
 
