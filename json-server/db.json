@@ -900,11 +900,11 @@
       "profileId": "1"
     },
     {
-      "id": "2",
-      "rate": 4,
-      "feedback": "таке",
       "userId": "1",
-      "profileId": "2"
+      "profileId": "2",
+      "rate": 3,
+      "feedback": "",
+      "id": "jb6LFuV"
     }
   ]
 }
