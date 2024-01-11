@@ -51,7 +51,7 @@ export const MenuDropdown = memo((props: MenuProps) => {
                 }
                 as="ul"
             >
-                {items.map((item) => {
+                {items.map((item, i) => {
                     const content = ({ active }: { active: boolean }) => (
                         <button
                             type="button"
@@ -62,6 +62,7 @@ export const MenuDropdown = memo((props: MenuProps) => {
                                 { [cls.active]: active },
                                 [className],
                             )}
+                            key={`dropdown-${i}`}
                         >
                             {item.content}
                         </button>
@@ -69,14 +70,14 @@ export const MenuDropdown = memo((props: MenuProps) => {
 
                     if (item.href) {
                         return (
-                            <Menu.Item as={AppLink} to={item.href}>
+                            <Menu.Item as={AppLink} to={item.href} key={`dropdown-${i}`}>
                                 {content}
                             </Menu.Item>
                         );
                     }
 
                     return (
-                        <Menu.Item as={Fragment}>
+                        <Menu.Item as={Fragment} key={`dropdown-${i}`}>
                             {content}
                         </Menu.Item>
                     );
