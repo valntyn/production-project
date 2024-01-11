@@ -743,6 +743,12 @@
       "userId": "1",
       "text": "123",
       "id": "wrtShqO"
+    },
+    {
+      "articleId": "8",
+      "userId": "1",
+      "text": "123",
+      "id": "w3AQ-ww"
     }
   ],
   "users": [
@@ -807,6 +813,98 @@
       "city": "Mariupol",
       "username": "test test",
       "avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2htcRru03V-rUIOsdKy33D-geTPsp7QugLUkiWozK&s"
+    }
+  ],
+  "article-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "good",
+      "userId": "1",
+      "articleId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "good",
+      "userId": "1",
+      "articleId": "11"
+    },
+    {
+      "userId": "1",
+      "articleId": "3",
+      "rate": 3,
+      "feedback": "",
+      "id": "I7ofk1u"
+    },
+    {
+      "userId": "1",
+      "articleId": "9",
+      "rate": 5,
+      "feedback": "asdasdasdasd",
+      "id": "Y7MhPzo"
+    },
+    {
+      "userId": "1",
+      "articleId": "10",
+      "rate": 1,
+      "feedback": "не дуже",
+      "id": "II0a75O"
+    },
+    {
+      "userId": "1",
+      "articleId": "7",
+      "rate": 3,
+      "feedback": "",
+      "id": "bcPnbbZ"
+    },
+    {
+      "userId": "1",
+      "articleId": "5",
+      "rate": 3,
+      "feedback": "",
+      "id": "bnYpHNr"
+    },
+    {
+      "userId": "1",
+      "articleId": "12",
+      "rate": 2,
+      "id": "yye4vgh"
+    },
+    {
+      "userId": "1",
+      "articleId": "8",
+      "rate": 3,
+      "id": "ryL_6Mc"
+    },
+    {
+      "userId": "1",
+      "articleId": "8",
+      "rate": 2,
+      "feedback": "",
+      "id": "CBiHKpt"
+    },
+    {
+      "userId": "1",
+      "articleId": "4",
+      "rate": 3,
+      "id": "XCtvC0o"
+    }
+  ],
+  "profile-ratings": [
+    {
+      "id": "1",
+      "rate": 4,
+      "feedback": "norm chel",
+      "userId": "1",
+      "profileId": "1"
+    },
+    {
+      "id": "2",
+      "rate": 4,
+      "feedback": "таке",
+      "userId": "1",
+      "profileId": "2"
     }
   ]
 }

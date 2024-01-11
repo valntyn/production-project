@@ -3,6 +3,7 @@ import cls from './StarRating.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Icon } from '@/shared/ui/Icon/Icon';
 import StarIcon from '../../assets/icons/star.svg';
+import { HStack } from '@/shared/ui/Stack/HStack/HStack';
 
 interface StarRatingProps {
     className?: string;
@@ -17,7 +18,7 @@ export const StarRating = memo((props: StarRatingProps) => {
     const {
         className, onSelect, size = 30, selectedStars = 0,
     } = props;
-    const [currentStarsCount, setCurrentStarsCurrent] = useState(0);
+    const [currentStarsCount, setCurrentStarsCurrent] = useState(selectedStars);
     const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
 
     const onHover = (starsCount: number) => () => {
@@ -41,7 +42,12 @@ export const StarRating = memo((props: StarRatingProps) => {
     };
 
     return (
-        <div className={classNames(cls.StarRating, {}, [className])}>
+        <HStack
+            gap="4"
+            align="center"
+            justify="center"
+            className={classNames(cls.StarRating, {}, [className])}
+        >
             {stars.map((starNumber) => (
                 <Icon
                     className={
@@ -54,8 +60,6 @@ export const StarRating = memo((props: StarRatingProps) => {
                             [className],
                         )
                     }
-                    height={size}
-                    width={size}
                     Svg={StarIcon}
                     key={starNumber}
                     onMouseLeave={onLeave}
@@ -63,6 +67,6 @@ export const StarRating = memo((props: StarRatingProps) => {
                     onClick={onClick(starNumber)}
                 />
             ))}
-        </div>
+        </HStack>
     );
 });
