@@ -3,11 +3,8 @@ import { memo } from 'react';
 import { useParams } from 'react-router-dom';
 import { VStack } from '@/shared/ui/Stack/VStack/VStack';
 import { Page } from '@/widgets/Page/Page';
-import { EditableProfileCard } from '@/features/editableProfileCard';
+import { EditableProfileCard, EditableProfileCardHeader } from '@/features/editableProfileCard';
 import { Text, TextSize } from '@/shared/ui/Text/Text';
-import {
-    EditableProfileCardHeader,
-} from '@/features/editableProfileCard/ui/EditableProfileCardHeader/EditableProfileCardHeader';
 import { ProfileRating } from '@/features/profileRating';
 
 interface Props {

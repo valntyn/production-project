@@ -69,6 +69,7 @@ module.exports = {
         'react/no-array-index-key': 'off',
         'arrow-body-style': 'off',
         'valentyn-plugin/path-checker': ['error', { alias: '@' }],
+        'valentyn-plugin/public-api-import': ['error', { alias: '@' }],
     },
     globals: {
         __IS_DEV__: true,
