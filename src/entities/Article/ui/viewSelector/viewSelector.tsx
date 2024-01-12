@@ -1,5 +1,5 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { memo } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import ListIcon from '@/shared/assets/icons/bi-list.svg';
 import TilesIcon from '@/shared/assets/icons/fe-list.svg';
 import { Button, ThemeButton } from '@/shared/ui/Button/Button';

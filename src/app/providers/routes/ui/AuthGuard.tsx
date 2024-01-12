@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 import { useSelector } from 'react-redux';
-import { getUserAuthData } from '@/entities/User';
 import { Navigate, useLocation } from 'react-router-dom';
+import { getUserAuthData } from '@/entities/User';
 import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 
 export function AuthGuard({ children }: { children: JSX.Element }) {

@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RatingSchema } from '../types/RatingSchema';
 
 const initialState: RatingSchema = {
-    
+
 };
 
 export const RatingSlice = createSlice({
@@ -10,7 +10,7 @@ export const RatingSlice = createSlice({
     initialState,
     reducers: {
         template: (state, action: PayloadAction<string>) => {
-           
+
         },
     },
     // extraReducers: (builder) => {

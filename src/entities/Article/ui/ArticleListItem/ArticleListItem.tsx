@@ -1,5 +1,5 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { HTMLAttributeAnchorTarget, memo, useCallback } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Text } from '@/shared/ui/Text/Text';
 import EyeIcon from '@/shared/assets/icons/eye.svg';
 import { Icon } from '@/shared/ui/Icon/Icon';

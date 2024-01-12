@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AdminPanelPageSchema } from '../types/AdminPanelPageSchema';
 
 const initialState: AdminPanelPageSchema = {
-    
+
 };
 
 export const AdminPanelPageSlice = createSlice({
@@ -10,7 +10,7 @@ export const AdminPanelPageSlice = createSlice({
     initialState,
     reducers: {
         template: (state, action: PayloadAction<string>) => {
-           
+
         },
     },
     // extraReducers: (builder) => {

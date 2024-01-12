@@ -1,10 +1,10 @@
+import { memo, useCallback, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import {
     DynamicModuleLoader,
     ReducersList,
 } from '@/shared/lib/components/DynamicModule/DynamicModuleLoader';
-import { memo, useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import {
     Text, TextAlign, TextSize, TextTheme,
 } from '@/shared/ui/Text/Text';
