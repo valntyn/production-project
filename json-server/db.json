@@ -889,6 +889,20 @@
       "articleId": "4",
       "rate": 3,
       "id": "XCtvC0o"
+    },
+    {
+      "userId": "2",
+      "articleId": "8",
+      "rate": 3,
+      "feedback": "",
+      "id": "FDX2EEP"
+    },
+    {
+      "userId": "2",
+      "articleId": "2",
+      "rate": 4,
+      "feedback": "",
+      "id": "IqRMFuB"
     }
   ],
   "profile-ratings": [

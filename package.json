@@ -34,7 +34,6 @@
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@types/react-router-dom": "^5.3.3",
-    "@types/react-virtualized": "^9.21.29",
     "@types/webpack": "^5.28.0",
     "@types/webpack-bundle-analyzer": "^4.4.1",
     "@types/webpack-dev-server": "^4.7.2",
@@ -92,7 +91,6 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^14.0.0",
     "react-redux": "^7.2.6",
-    "react-router-dom": "^6.2.1",
-    "react-virtualized": "^9.22.5"
+    "react-router-dom": "^6.2.1"
   }
 }
